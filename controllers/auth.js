@@ -37,12 +37,12 @@ router.post("/sign-up", async (req, res) => {
     req.body.password = hashedPassword;
 
     // All ready to create the new user!
-    await User.create(req.body);
+    const user = await User.create(req.body);
 
     // since they just signed in, store the user in the session and don't make them sign in
     req.session.user = {
-      username: userInDatabase.username,
-      _id: userInDatabase._id,
+      username: user.username,
+      _id: user._id,
     };
 
     //save the session in the DB before proceeding
