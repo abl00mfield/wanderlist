@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <%- include ("../partials/_navbar.ejs") %>
   <h1>Add a new Destination</h1>
   <form action="/destinations" method="POST">
     <label for="location">Location: </label>
@@ -18,15 +19,9 @@
     <textarea name="notes" id="notes"></textarea>
     <label for="photos">Photos: </label>
     <input type="text" name="photos" id="photos">
+    <button type="submit">Add Your Location</button>
   </form>
 
 </body>
 
 </html>
-
-<!-- const DestinationSchema = new mongoose.Schema({
-    location: { type: String, required: true },
-    hasBeenVisited: { type: Boolean, default: false },
-    notes: { type: String },
-    photos: [String],
-  }); -->
