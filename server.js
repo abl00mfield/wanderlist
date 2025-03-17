@@ -14,7 +14,7 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 dotenv.config();
 
 //set up controllers
-const authController = require("./controllers/auth.js");
+const authRoutes = require("./routes/authRoutes.js");
 
 //set up port
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-app.use("/auth", authController);
+app.use("/auth", authRoutes);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
