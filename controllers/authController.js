@@ -1,21 +1,13 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user.js");
 
-exports.signInGet = (req, res) => {
-  res.render("auth/sign-in.ejs");
-};
-
-exports.signUpGet = (req, res) => {
-  res.render("auth/sign-up.ejs");
-};
-
 exports.signOut = async (req, res) => {
   req.session.destroy(() => {
     res.redirect("/");
   });
 };
 
-exports.signUpPost = async (req, res) => {
+exports.signUp = async (req, res) => {
   try {
     // Check if the username is already taken
     const userInDatabase = await User.findOne({ username: req.body.username });
@@ -52,7 +44,7 @@ exports.signUpPost = async (req, res) => {
   }
 };
 
-exports.signInPost = async (req, res) => {
+exports.signIn = async (req, res) => {
   try {
     // First, get the user from the database
     const userInDatabase = await User.findOne({ username: req.body.username });
