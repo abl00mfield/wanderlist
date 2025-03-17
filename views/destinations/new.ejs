@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a New Destination</title>
+</head>
+
+<body>
+  <h1>Add a new Destination</h1>
+  <form action="/destinations" method="POST">
+    <label for="location">Location: </label>
+    <input type="text" id="location" name="location" required />
+    <label for="hasBeenVisited">Have you visted?: </label>
+    <input type="checkbox" name="hasBeenVisited" id="hasBeenVisited" />
+    <label for="notes"> Notes: </label>
+    <textarea name="notes" id="notes"></textarea>
+    <label for="photos">Photos: </label>
+    <input type="text" name="photos" id="photos">
+  </form>
+
+</body>
+
+</html>
+
+<!-- const DestinationSchema = new mongoose.Schema({
+    location: { type: String, required: true },
+    hasBeenVisited: { type: Boolean, default: false },
+    notes: { type: String },
+    photos: [String],
+  }); -->
