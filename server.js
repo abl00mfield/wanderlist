@@ -10,7 +10,8 @@ const MongoStore = require("connect-mongo");
 //custom middleware
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
-
+const axios = require("axios");
+const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 dotenv.config();
 
 //set up routes
