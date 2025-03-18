@@ -69,7 +69,6 @@ exports.deleteDestination = async (req, res) => {
     const deletedDestination = await Destination.findByIdAndDelete(
       destinationId
     );
-    console.log("DELETED DESTINATION: ", deletedDestination);
 
     if (!deletedDestination) {
       return res.status(404).send({ error: "Destination not found" });
