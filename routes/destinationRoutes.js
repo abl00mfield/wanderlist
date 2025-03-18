@@ -6,7 +6,8 @@ const multer = require("multer");
 //configure multer to store files in memory
 const storage = multer.memoryStorage();
 //limit to 2MB
-const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
+const upload = multer({ storage, limits: { fileSize: 2 * 1024 * 1024 } });
+const uploadErrorHandler = require("../middleware/upload-error-handler.js");
 //controller logic
 const {
   createDestination,
@@ -47,13 +48,17 @@ router.get("/:destinationId/edit", editDestinationGet);
 //PUT route to update the database with the edited destination
 router.put("/:destinationId", editDestinationPut);
 
+//DELETE route to delete a user selected photo
 router.delete("/:destinationId/photos/:photoUrl", removeDestinationPhoto);
 
+//POST route to add a photo to a destination
 router.post("/:destinationId/add-photo", addPhotoToDestination);
 
+//POST route to add an uploaded photo to a destination
 router.post(
   "/:destinationId/upload-photo",
   upload.single("photo"),
+  uploadErrorHandler,
   uploadUserPhoto
 );
 

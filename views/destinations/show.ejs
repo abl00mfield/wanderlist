@@ -8,13 +8,14 @@
 </head>
 
 <body>
+  <% console.log("SHOW PAGE") %>
   <%- include ("../partials/_navbar.ejs") %>
   <h1><%= destination.location %></h1>
   <p><%= destination.notes %></p>
   <% if (destination.hasBeenVisited) { %>
-  <p>Past Trip</p>
+  <p>You've been here!</p>
   <% } else { %>
-  <p>Upcoming trip</p>
+  <p>You want to Visit!</p>
   <% } %>
 
   <h2>Photos</h2>
@@ -35,6 +36,9 @@
   </form>
 
   <h3>Upload your own Photo</h3>
+  <% if (typeof error !== "undefined") { %>
+  <p class="error-message"><%= error %></p>
+  <% } %>
   <form action="/destinations/<%= destination._id %>/upload-photo" method="POST" enctype="multipart/form-data">
     <label for="photo">File: </label>
     <input type="file" name="photo" accept="image/*" id="photo" required>

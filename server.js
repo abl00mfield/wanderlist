@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
+app.use(isSignedIn);
 app.use("/destinations", destinationRoutes);
 app.use("/photos", photoRoutes);
 

@@ -37,14 +37,11 @@ exports.searchPhotos = async (req, res) => {
 // 📌 Add selected photo to a destination
 exports.addPhotoToDestination = async (req, res) => {
   const { destinationId } = req.params;
-  console.log(req.body);
 
   try {
     const { photoData } = req.body;
-    console.log("photo Data", photoData);
+
     const [photoUrl, photoAlt] = photoData.split("|");
-    console.log("photo url: ", photoUrl);
-    console.log("photo Alt: ", photoAlt);
 
     if (!photoUrl) {
       return res.status(400).send({ error: "Photo URL is required" });
@@ -90,16 +87,18 @@ exports.uploadUserPhoto = async (req, res) => {
 
 exports.removeDestinationPhoto = async (req, res) => {
   const { destinationId, photoUrl } = req.params;
-  console.log("DESTINATION ID", destinationId);
-  console.log("photo URL ", decodeURIComponent(photoUrl));
   try {
-    await Destination.findByIdAndUpdate(destinationId, {
-      //we have to decode out the special chars that are in a URL before passing to the DB
-      $pull: { photos: { url: decodeURIComponent(photoUrl) } },
-    });
+    await Destination.findByIdAndUpdate(
+      destinationId,
+      {
+        //we have to decode out the special chars that are in a URL before passing to the DB
+        $pull: { photos: { url: decodeURIComponent(photoUrl) } },
+      },
+      { new: true }
+    );
     res.redirect(`/destinations/${destinationId}/edit`);
   } catch (error) {
     console.log("Error removing Photo ", error);
-    res.redirect(`/destinaitons/${destinationId}/edit`);
+    res.redirect(`/destinations/${destinationId}/edit`);
   }
 };
