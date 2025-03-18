@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 //controller logic
 const {
   createDestination,
@@ -10,7 +13,10 @@ const {
   allDestinations,
 } = require("../controllers/destinationController");
 
-const { addPhotoToDestination } = require("../controllers/photoController");
+const {
+  addPhotoToDestination,
+  uploadUserPhoto,
+} = require("../controllers/photoController");
 
 //index page, show all destinations
 router.get("/", allDestinations);
@@ -37,5 +43,10 @@ router.get("/:destinationId/edit", editDestinationGet);
 router.put("/:destinationId", editDestinationPut);
 
 router.post("/:destinationId/add-photo", addPhotoToDestination);
+router.post(
+  "/:destinationId/upload-photo",
+  upload.single("photo"),
+  uploadUserPhoto
+);
 
 module.exports = router;

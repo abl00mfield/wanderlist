@@ -1,4 +1,5 @@
 const axios = require("axios");
+require("dotenv").config();
 const Destination = require("../models/destination");
 
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
@@ -15,7 +16,7 @@ exports.searchPhotos = async (req, res) => {
     const response = await axios.get("https://api.unsplash.com/search/photos", {
       params: {
         query,
-        client_id: UNSPLASH_ACCESS_KEY,
+        client_id: process.env.UNSPLASH_ACCESS_KEY,
         per_page: 5,
       },
     });
@@ -23,6 +24,7 @@ exports.searchPhotos = async (req, res) => {
     const photos = response.data.results.map((photo) => ({
       url: photo.urls.regular,
       id: photo.id,
+      alt: photo.alt_description || "photo from Unsplash",
     }));
 
     res.render("photos/search.ejs", { photos, destinationId });
@@ -49,6 +51,32 @@ exports.addPhotoToDestination = async (req, res) => {
     res.redirect(`/destinations/${destinationId}`);
   } catch (error) {
     console.error("Error adding photo:", error);
+    res.redirect(`/destinations/${destinationId}`);
+  }
+};
+
+exports.uploadUserPhoto = async (req, res) => {
+  const { destinationId } = req.params;
+  try {
+    if (!req.file) {
+      return res.status(400).send({ error: "No file uploaded" });
+    }
+    const imageBase64 = req.file.buffer.toString("base64");
+    const response = await axios.post(
+      "https://api.imgur.com/3/image",
+      { image: imageBase64 },
+      { headers: { Authorization: `Client-ID ${process.env.IMGUR_CLIENT_ID}` } }
+    );
+
+    const imgUrl = response.data.data.link;
+
+    await Destination.findByIdAndUpdate(destinationId, {
+      $push: { photos: imgUrl },
+    });
+
+    res.redirect(`/destinations/${destinationId}`);
+  } catch (error) {
+    console.log("Error uploading to imgur: ", error);
     res.redirect(`/destinations/${destinationId}`);
   }
 };

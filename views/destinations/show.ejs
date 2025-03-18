@@ -29,10 +29,17 @@
   <h3>Search & Add a Photo</h3>
   <form action="/photos/search" method="GET">
     <input type="hidden" name="destinationId" value="<%= destination._id %>">
-    <input type="text" name="query" placeholder="Search for a photo" required>
+    <label for="query">Search for a Photo: </label>
+    <input type="text" name="query" placeholder="search terms" required>
     <button type="submit">Search</button>
   </form>
 
+  <h3>Upload your own Photo</h3>
+  <form action="/destinations/<%= destination._id %>/upload-photo" method="POST" enctype="multipart/form-data">
+    <label for="photo">File: </label>
+    <input type="file" name="photo" accept="image/*" id="photo" required>
+    <button type="submit">Upload Photo</button>
+  </form>
 </body>
 
 </html>
