@@ -40,6 +40,9 @@
     <input type="file" name="photo" accept="image/*" id="photo" required>
     <button type="submit">Upload Photo</button>
   </form>
+  <form action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete Destination</button>
+  </form>
 </body>
 
 </html>
