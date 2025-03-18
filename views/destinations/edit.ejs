@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit <%= destination.location %></title>
+</head>
+
+<body>
+  <%- include("../partials/_navbar.ejs") %>
+  <h1>Edit <%= destination.location %></h1>
+  <form action="/destinations/<%= destination._id %>?_method=PUT" method="POST">
+    <label for="location">Location: </label>
+    <input type="text" name="location" id="location" value="<%= destination.location %>" required>
+    <label for="notes">Notes: </label>
+    <textarea name="notes" id="notes"><%= destination.notes %></textarea>
+    <label for="hasBeenVisted">Visted: </label>
+    <input type="checkbox" name="hasBeenVisted" id="hasBeenVisted" <%= destination.hasBeenVisted ? "checked" : "" %>>
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <h2>Photos</h2>
+  <% if (destination.photos.length > 0) { %>
+  <% destination.photos.forEach(photo => { %>
+  <div>
+    <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="200">
+    <p><%= photo.alt %></p>
+    <form action="/destinations/<%= destination._id %>/photos/<%= encodeURIComponent(photo.url) %>?_method=DELETE" method="POST">
+      <button type="submit">Remove Photo</button>
+    </form>
+  </div>
+
+  <% }) %>
+
+  <% } else { %>
+  <p>No photos added</p>
+  <%} %>
+
+</body>
+
+</html>

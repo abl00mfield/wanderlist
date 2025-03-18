@@ -32,8 +32,33 @@ exports.createDestination = async (req, res) => {
     res.redirect("/");
   }
 };
-exports.editDestinationGet = async (req, res) => {};
-exports.editDestinationPut = async (req, res) => {};
+exports.editDestinationGet = async (req, res) => {
+  try {
+    const destination = await Destination.findById(req.params.destinationId);
+    if (!destination) {
+      return res.status(404).send({ error: "Destination not found" });
+    }
+    res.render("destinations/edit.ejs", { destination });
+  } catch (error) {
+    console.log("Error fetching destination for Edit", error);
+    res.redirect("/destinations");
+  }
+};
+
+exports.editDestinationPut = async (req, res) => {
+  try {
+    const { destinationId } = req.params;
+    //convert checkbox to boolean
+    req.body.hasBeenVisited = req.body.hasBeenVisited === "on";
+    await Destination.findByIdAndUpdate(destinationId, req.body, { new: true });
+    res.redirect(`/destinations/${destinationId}`);
+  } catch (error) {
+    console.log("Error updating Destination ", error);
+    res.redirect("/destinations");
+  }
+};
+
+//logic to DELETE a destination
 exports.deleteDestination = async (req, res) => {
   try {
     //get destinnation Id from params

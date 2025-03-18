@@ -20,6 +20,7 @@ const {
 const {
   addPhotoToDestination,
   uploadUserPhoto,
+  removeDestinationPhoto,
 } = require("../controllers/photoController");
 
 //index page, show all destinations
@@ -46,7 +47,10 @@ router.get("/:destinationId/edit", editDestinationGet);
 //PUT route to update the database with the edited destination
 router.put("/:destinationId", editDestinationPut);
 
+router.delete("/:destinationId/photos/:photoUrl", removeDestinationPhoto);
+
 router.post("/:destinationId/add-photo", addPhotoToDestination);
+
 router.post(
   "/:destinationId/upload-photo",
   upload.single("photo"),

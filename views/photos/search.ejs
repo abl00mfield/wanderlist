@@ -17,7 +17,7 @@
   <form action="/destinations/<%= destinationId %>/add-photo" method="POST">
     <% photos.forEach(photo => { %>
     <label>
-      <input type="radio" name="photoUrl" value="<%= photo.url %>" required>
+      <input type="radio" name="photoData" value="<%= photo.url %>|<%= photo.alt %>" required>
       <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="300">
       <p><%= photo.alt %></p>
     </label>

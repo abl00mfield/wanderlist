@@ -20,7 +20,7 @@
   <h2>Photos</h2>
   <% if (destination.photos.length > 0) { %>
   <% destination.photos.forEach(photo => { %>
-  <img src="<%= photo %>" alt="Destination Photo" width="300">
+  <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="250">
   <% }) %>
   <% } else { %>
   <p>No photos added yet.</p>
@@ -38,11 +38,14 @@
   <form action="/destinations/<%= destination._id %>/upload-photo" method="POST" enctype="multipart/form-data">
     <label for="photo">File: </label>
     <input type="file" name="photo" accept="image/*" id="photo" required>
+    <label for="alt">Describe photo:</label>
+    <input type="text" name="alt" id="alt">
     <button type="submit">Upload Photo</button>
   </form>
   <form action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete Destination</button>
   </form>
+  <a href="/destinations/<%= destination._id %>/edit">Edit this destination</a>
 </body>
 
 </html>
