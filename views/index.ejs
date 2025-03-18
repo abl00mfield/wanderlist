@@ -5,19 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>Home Page</title>
+  <title>Welcome to WanderList</title>
 </head>
 
-<body>
+<body class="index-body">
   <%- include("./partials/_navbar.ejs") %>
-  <% if (user) { %>
-  <h1>Welcome to WanderList, <%= user.username %>!</h1>
+  <div class="index-container">
+    <div class="index-header">
+      <% if (user) { %>
+      <h1 class="index-title">Welcome to WanderList, <%= user.username %>!</h1>
+      <% } else { %>
+      <h1 class="index-title">Welcome to WanderList</h1>
+      <p class="index-description">Discover, plan, and relive your adventures! Wanderlist helps you track your dream destinations, document past trips, and collect breathtaking photos—all in one place. Whether you’re a seasoned traveler or just getting started, let your Wanderlist inspire your next journey!</p>
+      <p class="tagline">Save...Explore...Wander</p>
+    </div>
 
-  <% } else { %>
-  <h1>Welcome to WanderList, guest.</h1>
-
-  <% } %>
-
+    <% } %>
+  </div>
 </body>
 
 </html>

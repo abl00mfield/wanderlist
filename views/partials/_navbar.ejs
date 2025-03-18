@@ -3,7 +3,7 @@
 <nav>
   <%if (user) { %>
   <div class="navbar">
-    <h1 class="nav-header">WanderList</h1>
+    <h1 id="nav-header">WanderList</h1>
     <div class="nav-links">
       <a class="authlink" href="/destinations">Your Destinations</a>
       <a class="authlink" href="/auth/sign-out">Sign Out</a>
@@ -11,7 +11,7 @@
   </div>
   <% } else { %>
   <div class="navbar">
-    <h1 class="nav-header">WanderList</h1>
+    <h1 id="nav-header">WanderList</h1>
     <div class="nav-links">
       <a class="authlink" href="/auth/sign-in">Sign In</a>
       <a class="authlink" href="/auth/sign-up">Sign Up</a>

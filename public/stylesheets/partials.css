@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&display=swap");
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  padding: 5px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-header {
+  size: 1.3em !important;
+  margin: 0;
+  color: antiquewhite;
+}
+
+.authlink {
+  font-family: "Delius Unicase", sans-serif;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  color: #d9c9ba;
+}
+
+.authlink:hover {
+  color: antiquewhite;
+}
