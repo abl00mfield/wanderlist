@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><% destination.name %></title>
+</head>
+
+<body>
+  <%- include ("../partials/_navbar.ejs") %>
+  <h1><%= destination.location %></h1>
+  <p><%= destination.notes %></p>
+  <% if (destination.hasBeenVisited) { %>
+  <p>Past Trip</p>
+  <% } else { %>
+  <p>Upcoming trip</p>
+  <% } %>
+
+  <h2>Photos</h2>
+  <% if (destination.photos.length > 0) { %>
+  <% destination.photos.forEach(photo => { %>
+  <img src="<%= photo %>" alt="Destination Photo" width="300">
+  <% }) %>
+  <% } else { %>
+  <p>No photos added yet.</p>
+  <% } %>
+
+  <h3>Search & Add a Photo</h3>
+  <form action="/photos/search" method="GET">
+    <input type="hidden" name="destinationId" value="<%= destination._id %>">
+    <input type="text" name="query" placeholder="Search for a photo" required>
+    <button type="submit">Search</button>
+  </form>
+
+</body>
+
+</html>

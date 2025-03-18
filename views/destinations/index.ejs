@@ -13,14 +13,16 @@
   <a href="/destinations/new">Add a New Destination</a>
   <ul>
     <% destinations.forEach((destination) => { %>
-    <li>
-      <h2><%= destination.location %></h2>
-      <p><%= destination.notes %></p>
-      <% if (destination.hasBeenVisited)  { %>
-      <p>Past Trip</p> <% } else { %>
-      <p>Trip Wish List</p>
-      <% } %>
-    </li>
+    <a href="/destinations/<%= destination._id %>">
+      <li>
+        <h2><%= destination.location %></h2>
+        <p><%= destination.notes %></p>
+        <% if (destination.hasBeenVisited)  { %>
+        <p>Past Trip</p> <% } else { %>
+        <p>Trip Wish List</p>
+        <% } %>
+      </li>
+    </a>
 
     <% }) %>
   </ul>

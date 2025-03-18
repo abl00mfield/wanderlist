@@ -10,6 +10,8 @@ const {
   allDestinations,
 } = require("../controllers/destinationController");
 
+const { addPhotoToDestination } = require("../controllers/photoController");
+
 //index page, show all destinations
 router.get("/", allDestinations);
 
@@ -33,5 +35,7 @@ router.get("/:destinationId/edit", editDestinationGet);
 
 //PUT route to update the database with the edited destination
 router.put("/:destinationId", editDestinationPut);
+
+router.post("/:destinationId/add-photo", addPhotoToDestination);
 
 module.exports = router;

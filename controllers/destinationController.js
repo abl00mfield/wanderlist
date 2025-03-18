@@ -34,4 +34,13 @@ exports.createDestination = async (req, res) => {
 exports.editDestinationGet = async (req, res) => {};
 exports.editDestinationPut = async (req, res) => {};
 exports.deleteDestination = async (req, res) => {};
-exports.showDestination = async (req, res) => {};
+
+exports.showDestination = async (req, res) => {
+  try {
+    const destination = await Destination.findById(req.params.destinationId);
+    res.render("destinations/show.ejs", { destination });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+};
