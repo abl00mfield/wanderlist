@@ -4,7 +4,6 @@ body {
   font-family: "Comic Neue", sans-serif;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   height: 100vh;
   width: 100vw;
   background-color: #025951;
@@ -49,6 +48,7 @@ h1 {
 }
 .index-title {
   font-family: "Delius Unicase", sans-serif;
+  text-align: center;
 }
 .index-description {
   font-family: "Comic Neue", sans-serif;
@@ -114,44 +114,73 @@ button:hover {
 .all-destinations-header {
   color: antiquewhite;
 }
-.all-destinations-container {
-  width: 100%;
-  display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: center; /* Center items */
-}
 
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Make items horizontal */
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Spacing between items */
+  gap: 15px;
+}
+
+.all-destinations-container li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.destination-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .small-destination {
   background-color: antiquewhite;
-  padding: 10px 15px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  height: 300px;
+  position: relative;
   width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
 }
 
-.small-destination a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+.small-destination img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.small-location {
+  font-family: "Delius Unicase", sans-serif;
+  font-size: 1.2em;
+}
+
+.small-destination-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px; /* Match rounded corners */
+  border-bottom-right-radius: 10px; /* Match rounded corners */
 }
 
 /* Add hover effect */
 .small-destination:hover {
-  background-color: #a6785d;
-  transform: translateY(-2px);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
 }
+
 .all-destinations-header {
   align-self: center;
 }
@@ -165,7 +194,6 @@ ul {
 }
 a.add-new {
   text-decoration: none;
-  /* color: #333; */
   font-weight: bold;
 }
 a.add-new:hover {

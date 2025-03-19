@@ -14,7 +14,7 @@
     <label for="location">Location: </label>
     <input type="text" name="location" id="location" value="<%= destination.location %>" required>
     <label for="notes">Notes: </label>
-    <textarea name="notes" id="notes"><%= destination.notes %></textarea>
+    <textarea name="notes" id="notes" maxlength="200"><%= destination.notes %></textarea>
     <label for="hasBeenVisted">Visted: </label>
     <input type="checkbox" name="hasBeenVisited" id="hasBeenVisited" <%= destination.hasBeenVisited ? "checked" : "" %>>
     <button type="submit">Save Changes</button>

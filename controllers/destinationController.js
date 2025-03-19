@@ -2,15 +2,32 @@ const User = require("../models/user.js");
 const Destination = require("../models/destination.js");
 
 exports.allDestinations = async (req, res) => {
-  console.log("getting all destinations");
   try {
-    const { destinationIds: destinations } = (await User.findById(
-      req.session.user._id
-    ).populate("destinationIds")) || { destinationIds: [] };
+    //get the destinations from the database
+    const user = await User.findById(req.session.user._id).populate(
+      "destinationIds"
+    );
 
-    res.render("destinations/index.ejs", {
-      destinations,
+    let destinations = user ? user.destinationIds : [];
+    //get a random photo from each destination and create a new
+    //destination object with the random photo url to send
+    //to the index page
+    destinations = destinations.map((destination) => {
+      const destinationObj = destination.toObject();
+
+      if (destinationObj.photos.length > 0) {
+        const randomIndex = Math.floor(
+          Math.random() * destinationObj.photos.length
+        );
+        destinationObj.randomPhoto = destinationObj.photos[randomIndex].url;
+        destinationObj.randomPhotoAlt = destinationObj.photos[randomIndex].alt;
+      } else {
+        destinationObj.randomPhoto = null;
+      }
+      return destinationObj;
     });
+
+    res.render("destinations/index.ejs", { destinations });
   } catch (error) {
     console.log(error);
     res.redirect("/");

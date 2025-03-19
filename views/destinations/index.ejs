@@ -13,24 +13,30 @@
   <%- include ("../partials/_navbar.ejs") %>
 
   <h1 class="all-destinations-header">Your Destinations</h1>
-  <div class="all-destinations-container">
-    <ul>
-      <% destinations.forEach((destination) => { %>
-      <li>
+  <!-- <div class="all-destinations-container"> -->
+  <ul class="all-destinations-container">
+    <% destinations.forEach((destination) => { %>
+    <li>
+      <a class="destination-link" href="/destinations/<%= destination._id %>">
         <div class="small-destination">
-          <a href="/destinations/<%= destination._id %>">
+
+          <% if (destination.randomPhoto) { %>
+          <img src="<%= destination.randomPhoto %>" alt="<%= destination.randomPhotoAlt %>">
+          <% } %>
+          <div class="small-destination-info">
             <h2 class="small-location"><%= destination.location %></h2>
             <p class="small-notes"><%= destination.notes %></p>
             <% if (destination.hasBeenVisited)  { %>
             <p>Past Trip</p> <% } else { %>
             <p>Trip Wish List</p>
             <% } %>
-          </a>
+          </div>
         </div>
-      </li>
-      <% }) %>
-    </ul>
-  </div>
+      </a>
+    </li>
+    <% }); %>
+  </ul>
+  <!-- </div> -->
 
   <a href="/destinations/new" class="add-new">Add a New Destination</a>
 </body>
