@@ -4,51 +4,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/show.css">
+  <link rel="icon" href="/images/map.png">
   <title><% destination.name %></title>
 </head>
 
 <body>
   <%- include ("../partials/_navbar.ejs") %>
-  <h1><%= destination.location %></h1>
-  <p><%= destination.notes %></p>
-  <% if (destination.hasBeenVisited) { %>
-  <p>You've been here!</p>
-  <% } else { %>
-  <p>You want to Visit!</p>
-  <% } %>
 
-  <h2>Photos</h2>
-  <% if (destination.photos.length > 0) { %>
-  <% destination.photos.forEach(photo => { %>
-  <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="250">
-  <% }) %>
-  <% } else { %>
-  <p>No photos added yet.</p>
-  <% } %>
+  <h1 class="show-destination-header"><%= destination.location %></h1>
+  <div class="show-destination-wrapper">
+    <div class="show-destination-container">
+      <p class="show-destination-notes">Notes: <%= destination.notes %></p>
+      <% if (destination.hasBeenVisited) { %>
+      <p class="show-destination-visited">You've been here!</p>
+      <% } else { %>
+      <p class="show-destination-visited">You want to Visit!</p>
+      <% } %>
+      <div class="show-destination-photos">
+        <h2 class="photo-title">Photos</h2>
 
-  <h3>Search & Add a Photo</h3>
-  <form action="/photos/search" method="GET">
-    <input type="hidden" name="destinationId" value="<%= destination._id %>">
-    <label for="query">Search for a Photo: </label>
-    <input type="text" name="query" placeholder="search terms" required>
-    <button type="submit">Search</button>
-  </form>
+        <% if (destination.photos.length > 0) { %>
+        <div class="slider">
+          <% for (let i = 0; i< destination.photos.length; i++) { %>
+          <a href="#slide-<%= i + 1 %>"><%= i + 1 %></a>
+          <% } %>
+          <div class="slides">
+            <% destination.photos.forEach((photo, index) => { %>
+            <div id="slide-<%=index + 1 %>">
+              <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="300">
+            </div>
+            <% }) %>
+          </div>
+        </div> <% } else { %> <p>No photos added yet.</p>
+        <% } %>
+      </div>
+    </div>
+    <div class="show-destination-add-photos-container">
+      <div class="show-destination-search">
+        <h3>Search & Add a Photo</h3>
+        <form action="/photos/search" method="GET">
+          <input type="hidden" name="destinationId" value="<%= destination._id %>">
+          <label for="query">Search for a Photo: </label>
+          <input type="text" name="query" placeholder="search terms" required>
+          <button type="submit">Search</button>
+        </form>
+      </div>
 
-  <h3>Upload your own Photo</h3>
-  <% if (typeof error !== "undefined") { %>
-  <p class="error-message"><%= error %></p>
-  <% } %>
-  <form action="/destinations/<%= destination._id %>/upload-photo" method="POST" enctype="multipart/form-data">
-    <label for="photo">File: </label>
-    <input type="file" name="photo" accept="image/*" id="photo" required>
-    <label for="alt">Describe photo:</label>
-    <input type="text" name="alt" id="alt">
-    <button type="submit">Upload Photo</button>
-  </form>
-  <form action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete Destination</button>
-  </form>
-  <a href="/destinations/<%= destination._id %>/edit">Edit this destination</a>
+      <div class="show-destination-upload">
+        <h3>Upload your own Photo</h3>
+        <% if (typeof error !== "undefined") { %>
+        <p class="error-message"><%= error %></p>
+        <% } %>
+        <form action="/destinations/<%= destination._id %>/upload-photo" method="POST" enctype="multipart/form-data">
+          <label for="photo">File: </label>
+          <input type="file" name="photo" accept="image/*" id="photo" required>
+          <label for="alt">Describe photo:</label>
+          <input type="text" name="alt" id="alt">
+          <button type="submit">Upload Photo</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="show-destination-buttons">
+    <form class="delete-form" action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete Destination</button>
+    </form>
+    <a class="btn" href="/destinations/<%= destination._id %>/edit">Edit this destination</a>
+  </div>
 </body>
 
 </html>

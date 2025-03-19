@@ -73,8 +73,9 @@ exports.uploadUserPhoto = async (req, res) => {
 
     res.redirect(`/destinations/${destinationId}`);
   } catch (error) {
-    console.log("Error uploading to Cloudinary: ", error);
-    res.redirect(`/destinations/${destinationId}`);
+    // console.log("Error uploading to Cloudinary: ", error);
+    // res.redirect(`/destinations/${destinationId}`);
+    res.send("error: ", error);
   }
 };
 
