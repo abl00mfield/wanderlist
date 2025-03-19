@@ -4,29 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="icon" href="/images/map.png">
   <title>My Destinations</title>
 </head>
 
 <body>
   <%- include ("../partials/_navbar.ejs") %>
-  <h1>Your Destinations</h1>
-  <a href="/destinations/new">Add a New Destination</a>
-  <ul>
-    <% destinations.forEach((destination) => { %>
-    <a href="/destinations/<%= destination._id %>">
+
+  <h1 class="all-destinations-header">Your Destinations</h1>
+  <div class="all-destinations-container">
+    <ul>
+      <% destinations.forEach((destination) => { %>
       <li>
-        <h2><%= destination.location %></h2>
-        <p><%= destination.notes %></p>
-        <% if (destination.hasBeenVisited)  { %>
-        <p>Past Trip</p> <% } else { %>
-        <p>Trip Wish List</p>
-        <% } %>
+        <div class="small-destination">
+          <a href="/destinations/<%= destination._id %>">
+            <h2 class="small-location"><%= destination.location %></h2>
+            <p class="small-notes"><%= destination.notes %></p>
+            <% if (destination.hasBeenVisited)  { %>
+            <p>Past Trip</p> <% } else { %>
+            <p>Trip Wish List</p>
+            <% } %>
+          </a>
+        </div>
       </li>
-    </a>
+      <% }) %>
+    </ul>
+  </div>
 
-    <% }) %>
-  </ul>
-
+  <a href="/destinations/new" class="add-new">Add a New Destination</a>
 </body>
 
 </html>
