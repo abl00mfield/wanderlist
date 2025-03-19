@@ -1,7 +1,7 @@
 const axios = require("axios");
 require("dotenv").config();
+const { cloudinary } = require("../config/cloudinary");
 const Destination = require("../models/destination");
-
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 // 📌 Search for photos on Unsplash
@@ -65,22 +65,15 @@ exports.uploadUserPhoto = async (req, res) => {
     if (!req.file) {
       return res.status(400).send({ error: "No file uploaded" });
     }
-    const imageBase64 = req.file.buffer.toString("base64");
-    const response = await axios.post(
-      "https://api.imgur.com/3/image",
-      { image: imageBase64 },
-      { headers: { Authorization: `Client-ID ${process.env.IMGUR_CLIENT_ID}` } }
-    );
 
-    const imgUrl = response.data.data.link;
-
+    const imgUrl = req.file.path; //get url from the request body
     await Destination.findByIdAndUpdate(destinationId, {
       $push: { photos: { url: imgUrl, alt: alt || "User upload photo" } },
     });
 
     res.redirect(`/destinations/${destinationId}`);
   } catch (error) {
-    console.log("Error uploading to imgur: ", error);
+    console.log("Error uploading to Cloudinary: ", error);
     res.redirect(`/destinations/${destinationId}`);
   }
 };
@@ -88,6 +81,11 @@ exports.uploadUserPhoto = async (req, res) => {
 exports.removeDestinationPhoto = async (req, res) => {
   const { destinationId, photoUrl } = req.params;
   try {
+    //get cloudinary ID from URL
+    const publicId = photoUrl.split("/").pop().split(".")[0];
+    //remove from cloudinary storage
+    await cloudinary.uploader.destroy(publicId);
+
     await Destination.findByIdAndUpdate(
       destinationId,
       {

@@ -49,6 +49,7 @@ exports.createDestination = async (req, res) => {
     res.redirect("/");
   }
 };
+
 exports.editDestinationGet = async (req, res) => {
   try {
     const destination = await Destination.findById(req.params.destinationId);

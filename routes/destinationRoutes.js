@@ -4,7 +4,7 @@ const router = express.Router();
 //photo upload package
 const multer = require("multer");
 //configure multer to store files in memory
-const storage = multer.memoryStorage();
+const { storage } = require("../config/cloudinary");
 //limit to 2MB
 const upload = multer({ storage, limits: { fileSize: 2 * 1024 * 1024 } });
 const uploadErrorHandler = require("../middleware/upload-error-handler.js");
