@@ -13,7 +13,6 @@
   <%- include ("../partials/_navbar.ejs") %>
 
   <h1 class="all-destinations-header">Your Destinations</h1>
-  <!-- <div class="all-destinations-container"> -->
   <ul class="all-destinations-container">
     <% destinations.forEach((destination) => { %>
     <li>
@@ -37,7 +36,6 @@
     </li>
     <% }); %>
   </ul>
-  <!-- </div> -->
 
   <a href="/destinations/new" class="add-new">Add a New Destination</a>
 </body>

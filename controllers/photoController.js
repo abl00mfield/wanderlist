@@ -17,7 +17,7 @@ exports.searchPhotos = async (req, res) => {
       params: {
         query,
         client_id: UNSPLASH_ACCESS_KEY,
-        per_page: 10,
+        per_page: 8,
       },
     });
 
@@ -39,7 +39,13 @@ exports.addPhotoToDestination = async (req, res) => {
   const { destinationId } = req.params;
 
   try {
-    const { photoData } = req.body;
+    let { photoData } = req.body;
+
+    if (!photoData) {
+      return res
+        .status(400)
+        .send("No photos selected, please go back and select at least 1 photo");
+    }
 
     if (!Array.isArray(photoData)) {
       photoData = [photoData];
@@ -79,9 +85,8 @@ exports.uploadUserPhoto = async (req, res) => {
 
     res.redirect(`/destinations/${destinationId}`);
   } catch (error) {
-    // console.log("Error uploading to Cloudinary: ", error);
-    // res.redirect(`/destinations/${destinationId}`);
-    res.send("error: ", error);
+    console.log("Error uploading to Cloudinary: ", error);
+    res.redirect(`/destinations/${destinationId}`);
   }
 };
 

@@ -7,11 +7,13 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+
 //custom middleware
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const axios = require("axios");
 
+//configure dotenv
 dotenv.config();
 
 //set up routes
@@ -34,9 +36,10 @@ app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use((req, res, next) => {
-  res.locals.isShowPage = false; // Default value
+  res.locals.isShowPage = false; // Default value for special styling
   next();
 });
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -48,8 +51,10 @@ app.use(
     }),
   })
 );
+
 app.use(passUserToView);
 
+//index route - bypass main page if logged in
 app.get("/", (req, res) => {
   if (req.session.user) {
     res.redirect("/destinations");

@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px red solid; */
 }
 
 body {
@@ -20,12 +19,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 h1 {
   font-family: "Delius Unicase", sans-serif;
 }
+
 .new-title,
 .edit-title {
   color: antiquewhite;
@@ -41,13 +40,10 @@ h1 {
 
 .index-container {
   min-height: 100vh;
-  /* width: 100vw; */
   display: flex;
   flex-direction: column;
-  align-content: center;
   align-items: center;
   justify-content: center;
-  /* height: 100%; */
 }
 
 .index-header {
@@ -63,11 +59,13 @@ h1 {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   margin-bottom: 100px;
 }
+
 .index-title,
 .edit-title {
   font-family: "Delius Unicase", sans-serif;
   text-align: center;
 }
+
 .index-description {
   font-family: "Comic Neue", sans-serif;
   font-size: 1.8em;
@@ -75,6 +73,7 @@ h1 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .tagline {
   font-family: "Delius Unicase", sans-serif;
   font-size: 1.5em;
@@ -90,6 +89,7 @@ h1 {
   width: 100%;
   height: 100%;
 }
+
 .signup-header,
 .signin-header {
   color: antiquewhite;
@@ -104,12 +104,10 @@ form {
   height: 50%;
   background-color: antiquewhite;
   padding: 30px;
-  /* padding: 30px 40px 20px 40px; */
   border-radius: 20px;
   color: #02735e;
   font-weight: bold;
   font-size: 1.4em;
-  /* margin-bottom: 75px; */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -126,14 +124,17 @@ form {
   gap: 10px;
   height: 100%;
 }
+
 input {
   border: 1px solid rgb(182, 182, 182);
   padding: 8px;
   border-radius: 10px;
 }
+
 textarea {
   padding: 5px;
 }
+
 .checkbox-container {
   display: flex;
   flex-direction: row;
@@ -150,10 +151,12 @@ button {
   margin: 15px 0;
   font-size: 1.3em;
 }
+
 button:hover {
   background-color: #a6785d;
   color: white;
 }
+
 .all-destinations-header {
   color: antiquewhite;
 }
@@ -218,7 +221,6 @@ ul {
   border-bottom-right-radius: 10px;
 }
 
-/* Add hover effect */
 .small-destination:hover {
   transform: scale(1.08);
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
@@ -228,6 +230,7 @@ ul {
 .all-destinations-header {
   align-self: center;
 }
+
 .add-new {
   align-self: center;
   background-color: #a6785d;
@@ -237,10 +240,12 @@ ul {
   font-size: 1.5em;
   margin-bottom: 10px;
 }
+
 a.add-new {
   text-decoration: none;
   font-weight: bold;
 }
+
 a.add-new:hover {
   background-color: #328c59;
   color: white;
@@ -260,15 +265,16 @@ a.add-new:hover {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .edit-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   width: 50%;
   height: 100%;
 }
+
 .edit-form form {
   width: 80%;
   height: 100%;
@@ -276,14 +282,15 @@ a.add-new:hover {
   gap: 10px;
   padding-bottom: 0;
 }
+
 .edit-photo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 75vh; */
   width: 100%;
 }
+
 .edit-photo-title {
   color: antiquewhite;
   font-size: 2em;
@@ -292,13 +299,13 @@ a.add-new:hover {
 
 .all-photo-container {
   display: flex;
-  /* flex-direction: column; */
   flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;
   align-items: center;
   justify-content: center;
 }
+
 .thumbnail {
   width: 150px;
   height: 150px;
@@ -306,6 +313,7 @@ a.add-new:hover {
   border-radius: 10px;
   display: block;
 }
+
 .alt-text {
   width: 150px;
   color: antiquewhite;
@@ -317,6 +325,7 @@ a.add-new:hover {
   align-items: center;
   gap: 10px;
 }
+
 .remove-photo-button {
   font-family: "Comic Neue", sans-serif;
   width: 100px;
@@ -408,19 +417,23 @@ a.add-new:hover {
     font-size: 1.2em;
   }
 
+  .index-header {
+    width: 90%;
+  }
+
   form {
     width: 75%;
   }
 
-  .index-header {
-    width: 85%;
-    /* height: 100vh; */
+  .index-container {
+    justify-content: flex-start;
   }
+
   .index-description {
     font-size: 1.3em;
   }
   .edit-container {
-    flex-direction: column; /* ✅ Stack form & photo sections on mobile */
+    flex-direction: column;
     align-items: center;
   }
 
@@ -431,7 +444,7 @@ a.add-new:hover {
   }
 
   .thumbnail {
-    width: 100px; /* ✅ Reduce thumbnail size */
+    width: 100px;
     height: 100px;
   }
 
@@ -439,7 +452,7 @@ a.add-new:hover {
   .save-button,
   .remove-photo-button,
   button {
-    font-size: 1em; /* ✅ Prevent oversized buttons */
+    font-size: 1em;
     width: 100%;
   }
   .photo-grid {
@@ -453,7 +466,7 @@ a.add-new:hover {
   }
 
   .index-header {
-    width: 85%;
+    width: 90%;
   }
   .index-description {
     font-size: 1em;

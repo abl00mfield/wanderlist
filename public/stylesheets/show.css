@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Delius+Unicase:wght@400;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Comic Neue", sans-serif;
   display: flex;
@@ -16,6 +18,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .show-destination-header {
   font-family: "Delius Unicase", sans-serif;
   font-size: 2.5em;
@@ -23,6 +26,7 @@ body {
   margin-bottom: 20px;
   color: #025951;
 }
+
 .show-destination-wrapper {
   display: flex;
   flex-direction: row;
@@ -45,17 +49,15 @@ body {
   min-width: 350px;
   max-width: 500px;
   border-radius: 10px;
-  /* padding: 20px; */
   align-items: center;
   justify-content: space-between;
-  height: 600px;
+  height: 550px;
 }
 
 .show-destination-container {
   padding: 20px;
 }
 
-/* Photo Sections */
 .show-destination-search,
 .show-destination-upload {
   width: 100%;
@@ -72,18 +74,16 @@ body {
 
 .show-destination-notes {
   text-align: left;
-  /* font-weight: bold; */
   font-size: 1.5em;
   color: #333;
-  /* padding: 10px; */
   width: 100%;
 }
 
 .show-destination-visited {
   width: 100%;
   text-align: right;
-  /* padding: 10px; */
 }
+
 .photo-title {
   text-align: center;
   font-size: 1.5em;
@@ -131,11 +131,13 @@ button {
 button:hover {
   background-color: #025951;
 }
+
 .delete-form {
   width: 150px;
   background-color: #d9d0c7;
   box-shadow: none;
 }
+
 .delete-form button {
   border-radius: 10px;
 }
@@ -180,6 +182,7 @@ h3 {
   text-align: center;
   overflow: hidden;
 }
+
 .slides {
   display: flex;
   overflow-x: auto;
@@ -187,10 +190,12 @@ h3 {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
+
 .slides::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+
 .slides::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -212,6 +217,7 @@ h3 {
   align-items: center;
   font-size: 100px;
 }
+
 img {
   object-fit: cover;
   position: absolute;
@@ -234,9 +240,11 @@ img {
   position: relative;
   color: antiquewhite;
 }
+
 .slider > a:active {
   top: 1px;
 }
+
 .slider > a:focus {
   background: #000;
 }

@@ -40,7 +40,7 @@
   color: #328c59;
 }
 
-/* 📌 For Tablets & Small Screens (max-width: 1024px) */
+/* For Tablets & Small Screens (max-width: 1024px) */
 @media (max-width: 1024px) {
   .navbar {
     flex-direction: column;
@@ -60,7 +60,7 @@
   }
 }
 
-/* 📌 For Mobile Phones (max-width: 768px) */
+/* For Mobile Phones (max-width: 768px) */
 @media (max-width: 768px) {
   .navbar {
     padding: 10px;
@@ -75,7 +75,7 @@
   }
 }
 
-/* 📌 For Very Small Screens (max-width: 480px) */
+/* For Very Small Screens (max-width: 480px) */
 @media (max-width: 480px) {
   .navbar {
     padding: 8px;

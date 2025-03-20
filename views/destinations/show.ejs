@@ -22,9 +22,6 @@
 
         <% if (destination.photos.length > 0) { %>
         <div class="slider">
-          <!-- <% for (let i = 0; i< destination.photos.length; i++) { %>
-          <a href="#slide-<%= i + 1 %>"><%= i + 1 %></a>
-          <% } %> -->
           <div class="slides">
             <% destination.photos.forEach((photo, index) => { %>
             <div id="slide-<%=index + 1 %>">

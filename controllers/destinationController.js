@@ -9,6 +9,7 @@ exports.allDestinations = async (req, res) => {
     );
 
     let destinations = user ? user.destinationIds : [];
+
     //get a random photo from each destination and create a new
     //destination object with the random photo url to send
     //to the index page
@@ -38,9 +39,9 @@ exports.createDestination = async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     req.body.hasBeenVisited = req.body.hasBeenVisited === "on" ? true : false;
-    // console.log("req body: ", req.body);
+
     const newDestination = await Destination.create(req.body);
-    // console.log("created destination: ", newDestination);
+
     currentUser.destinationIds.push(newDestination._id);
     await currentUser.save();
     res.redirect("/destinations");

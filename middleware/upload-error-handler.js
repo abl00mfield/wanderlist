@@ -1,5 +1,6 @@
 const Destination = require("../models/destination");
 
+//provides a useful message to the user if their file it too large
 const uploadErrorHandler = async (err, req, res, next) => {
   if (err) {
     console.error("File Upload Error: ", err);
