@@ -4,30 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Select a Photo</title>
 </head>
 
 <body>
   <%- include("../partials/_navbar.ejs") %>
-  <h1>Select a Photo for Your Destination</h1>
+  <h1 class="edit-title">Select a Photo for Your Destination</h1>
 
   <% if (photos.length === 0) { %>
   <p>No photos found. Try another search.</p>
   <% } else { %>
-  <form action="/destinations/<%= destinationId %>/add-photo" method="POST">
-    <% photos.forEach(photo => { %>
-    <label>
-      <input type="radio" name="photoData" value="<%= photo.url %>|<%= photo.alt %>" required>
-      <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="300">
-      <p><%= photo.alt %></p>
-    </label>
-    <% }); %>
+  <form class="photo-box" action="/destinations/<%= destinationId %>/add-photo" method="POST">
+    <div class="photo-grid">
+      <% photos.forEach(photo => { %>
+      <label>
+        <input type="checkbox" name="photoData" value="<%= photo.url %>|<%= photo.alt %>">
+        <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="300">
+        <p><%= photo.alt %></p>
+      </label>
+      <% }); %>
+    </div>
     <br>
-    <button type="submit">Add Photo</button>
+    <button class="add-photo" type="submit">Add Photo</button>
   </form>
   <% } %>
 
-  <br><a href="/destinations/<%= destinationId %>">Back to Destination</a>
+  <a href="/destinations/<%= destinationId %>" class="back-button">Back to Destination</a>
 </body>
 
 </html>

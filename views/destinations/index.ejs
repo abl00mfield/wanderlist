@@ -26,8 +26,9 @@
           <div class="small-destination-info">
             <h2 class="small-location"><%= destination.location %></h2>
             <p class="small-notes"><%= destination.notes %></p>
+            <br>
             <% if (destination.hasBeenVisited)  { %>
-            <p>Past Trip</p> <% } else { %>
+            <p>You've been here!</p> <% } else { %>
             <p>Trip Wish List</p>
             <% } %>
           </div>

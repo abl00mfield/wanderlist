@@ -16,19 +16,15 @@
   <div class="show-destination-wrapper">
     <div class="show-destination-container">
       <p class="show-destination-notes">Notes: <%= destination.notes %></p>
-      <% if (destination.hasBeenVisited) { %>
-      <p class="show-destination-visited">You've been here!</p>
-      <% } else { %>
-      <p class="show-destination-visited">You want to Visit!</p>
-      <% } %>
+
       <div class="show-destination-photos">
         <h2 class="photo-title">Photos</h2>
 
         <% if (destination.photos.length > 0) { %>
         <div class="slider">
-          <% for (let i = 0; i< destination.photos.length; i++) { %>
+          <!-- <% for (let i = 0; i< destination.photos.length; i++) { %>
           <a href="#slide-<%= i + 1 %>"><%= i + 1 %></a>
-          <% } %>
+          <% } %> -->
           <div class="slides">
             <% destination.photos.forEach((photo, index) => { %>
             <div id="slide-<%=index + 1 %>">
@@ -38,7 +34,13 @@
           </div>
         </div> <% } else { %> <p>No photos added yet.</p>
         <% } %>
+
       </div>
+      <% if (destination.hasBeenVisited) { %>
+      <p class="show-destination-visited">You've been here!</p>
+      <% } else { %>
+      <p class="show-destination-visited">You want to Visit!</p>
+      <% } %>
     </div>
     <div class="show-destination-add-photos-container">
       <div class="show-destination-search">
@@ -46,7 +48,7 @@
         <form action="/photos/search" method="GET">
           <input type="hidden" name="destinationId" value="<%= destination._id %>">
           <label for="query">Search for a Photo: </label>
-          <input type="text" name="query" placeholder="search terms" required>
+          <input type="text" name="query" placeholder="Search photos" required>
           <button type="submit">Search</button>
         </form>
       </div>
@@ -60,7 +62,7 @@
           <label for="photo">File: </label>
           <input type="file" name="photo" accept="image/*" id="photo" required>
           <label for="alt">Describe photo:</label>
-          <input type="text" name="alt" id="alt">
+          <input type="text" name="alt" id="alt" placeholder="Photo description">
           <button type="submit">Upload Photo</button>
         </form>
       </div>

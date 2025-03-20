@@ -4,7 +4,7 @@ const { cloudinary } = require("../config/cloudinary");
 const Destination = require("../models/destination");
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
-// 📌 Search for photos on Unsplash
+// Search for photos on Unsplash
 exports.searchPhotos = async (req, res) => {
   try {
     const { query, destinationId } = req.query; // Get search term & destinationId
@@ -17,7 +17,7 @@ exports.searchPhotos = async (req, res) => {
       params: {
         query,
         client_id: UNSPLASH_ACCESS_KEY,
-        per_page: 5,
+        per_page: 10,
       },
     });
 
@@ -34,21 +34,27 @@ exports.searchPhotos = async (req, res) => {
   }
 };
 
-// 📌 Add selected photo to a destination
+//  Add selected photo to a destination
 exports.addPhotoToDestination = async (req, res) => {
   const { destinationId } = req.params;
 
   try {
     const { photoData } = req.body;
 
-    const [photoUrl, photoAlt] = photoData.split("|");
+    if (!Array.isArray(photoData)) {
+      photoData = [photoData];
+    }
+    const photosToAdd = photoData.map((data) => {
+      const [photoUrl, photoAlt] = data.split("|");
+      return { url: photoUrl, alt: photoAlt || "destination photo" };
+    });
 
-    if (!photoUrl) {
-      return res.status(400).send({ error: "Photo URL is required" });
+    if (photosToAdd.length === 0) {
+      return res.status(400).send({ error: "No photos selected" });
     }
 
     await Destination.findByIdAndUpdate(destinationId, {
-      $push: { photos: { url: photoUrl, alt: photoAlt || "Destinaton Photo" } },
+      $push: { photos: { $each: photosToAdd } },
     });
 
     res.redirect(`/destinations/${destinationId}`);
