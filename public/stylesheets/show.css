@@ -71,13 +71,14 @@ body {
   font-weight: bold;
   font-size: 1.5em;
   color: #333;
-  padding: 10px;
+  /* padding: 10px; */
   width: 100%;
 }
 
 .show-destination-visited {
   width: 100%;
   text-align: left;
+  /* padding: 10px; */
 }
 .photo-title {
   text-align: center;

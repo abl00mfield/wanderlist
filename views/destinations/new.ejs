@@ -4,23 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Add a New Destination</title>
 </head>
 
 <body>
   <%- include ("../partials/_navbar.ejs") %>
-  <h1>Add a new Destination</h1>
-  <form action="/destinations" method="POST">
-    <label for="location">Location: </label>
-    <input type="text" id="location" name="location" required />
-    <label for="hasBeenVisited">Have you visted?: </label>
-    <input type="checkbox" name="hasBeenVisited" id="hasBeenVisited" />
-    <label for="notes"> Notes: </label>
-    <textarea name="notes" id="notes" maxlength="200"></textarea>
+  <div class="new-container">
+    <h1 class="new-title">Add a new Destination</h1>
+    <form class="new-form" action="/destinations" method="POST">
+      <label for="location">Location: </label>
+      <input type="text" id="location" name="location" required />
+      <div class="checkbox-container">
+        <label for="hasBeenVisited">Have you visted?: </label>
+        <input type="checkbox" name="hasBeenVisited" id="hasBeenVisited" />
+      </div>
+      <label for="notes"> Notes: </label>
+      <textarea name="notes" id="notes" maxlength="200" cols="40" rows="5"></textarea>
 
-    <button type="submit">Add Your Location</button>
-  </form>
-
+      <button type="submit">Add Your Location</button>
+    </form>
+  </div>
 </body>
 
 </html>

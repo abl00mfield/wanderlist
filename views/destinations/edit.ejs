@@ -4,39 +4,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Edit <%= destination.location %></title>
 </head>
 
 <body>
   <%- include("../partials/_navbar.ejs") %>
-  <h1>Edit <%= destination.location %></h1>
-  <form action="/destinations/<%= destination._id %>?_method=PUT" method="POST">
-    <label for="location">Location: </label>
-    <input type="text" name="location" id="location" value="<%= destination.location %>" required>
-    <label for="notes">Notes: </label>
-    <textarea name="notes" id="notes" maxlength="200"><%= destination.notes %></textarea>
-    <label for="hasBeenVisted">Visted: </label>
-    <input type="checkbox" name="hasBeenVisited" id="hasBeenVisited" <%= destination.hasBeenVisited ? "checked" : "" %>>
-    <button type="submit">Save Changes</button>
-  </form>
+  <h1 class="edit-title">Edit <%= destination.location %></h1>
+  <div class="edit-container">
+    <div class="edit-form">
+      <form action="/destinations/<%= destination._id %>?_method=PUT" method="POST">
+        <label for="location">Location: </label>
+        <input type="text" name="location" id="location" value="<%= destination.location %>" required>
+        <label for="notes">Notes: </label>
+        <textarea name="notes" id="notes" maxlength="200" cols="40" rows="5"><%= destination.notes %></textarea>
+        <div class="checkbox-container">
+          <label for="hasBeenVisted">Visted: </label>
+          <input type="checkbox" name="hasBeenVisited" id="hasBeenVisited" <%= destination.hasBeenVisited ? "checked" : "" %>>
+        </div>
+        <button class="save-button" type="submit">Save Changes</button>
+      </form>
+    </div>
 
-  <h2>Photos</h2>
-  <% if (destination.photos.length > 0) { %>
-  <% destination.photos.forEach(photo => { %>
-  <div>
-    <img src="<%= photo.url %>" alt="<%= photo.alt %>" width="200">
-    <p><%= photo.alt %></p>
-    <form action="/destinations/<%= destination._id %>/photos/<%= encodeURIComponent(photo.url) %>?_method=DELETE" method="POST">
-      <button type="submit">Remove Photo</button>
-    </form>
+    <div class="edit-photo-container">
+      <h2 class="edit-photo-title">Photos</h2>
+      <% if (destination.photos.length > 0) { %>
+      <div class="all-photo-container">
+        <% destination.photos.forEach(photo => { %>
+        <div class="edit-photo">
+          <img class=thumbnail src="<%= photo.url %>" alt="<%= photo.alt %>">
+          <!-- <p class="alt-text"><%= photo.alt %></p> -->
+          <form class="remove-photo-button" action="/destinations/<%= destination._id %>/photos/<%= encodeURIComponent(photo.url) %>?_method=DELETE" method="POST">
+            <button type="submit">Remove</button>
+          </form>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+
+    <% } else { %>
+    <p class="no-photo">No photos added</p>
+    <%} %>
   </div>
-
-  <% }) %>
-
-  <% } else { %>
-  <p>No photos added</p>
-  <%} %>
-
 </body>
 
 </html>
