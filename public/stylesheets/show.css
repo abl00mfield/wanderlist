@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Delius+Unicase:wght@400;700&display=swap");
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: "Comic Neue", sans-serif;
   display: flex;
@@ -18,56 +22,39 @@ body {
   text-align: center;
   margin-bottom: 20px;
   color: #025951;
-  /* align-self: center; */
 }
 .show-destination-wrapper {
   display: flex;
   flex-direction: row;
   gap: 20px;
   width: 100%;
-  /* align-items: stretch; */
   justify-content: center;
   align-items: flex-start;
+}
+
+.show-destination-container {
+  background-color: antiquewhite;
 }
 
 .show-destination-container,
 .show-destination-add-photos-container {
   display: flex;
-  /* flex: 1; */
   flex-direction: column;
   width: 40%;
   gap: 15px;
   min-width: 350px;
-  /* background: #ffffff; */
+  max-width: 500px;
   border-radius: 10px;
   padding: 20px;
-  /* height: 90%; */
-  /* border: 1px red solid; */
   align-items: center;
-  /* min-width: 400px; */
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */
+  justify-content: space-evenly;
+  height: 600px;
 }
-
-/* .show-destination-search,
-.show-destination-upload {
-  height: 50%;
-  width: 90%;
-  background-color: #02735e;
-  display: flex;
-  flex-direction: column;
-  margin: 15px;
-  /* border: 1px red solid; */
-/* border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  color: antiquewhite;
-  align-items: center;
-  padding: 10px;
-}  */
 
 /* Photo Sections */
 .show-destination-search,
 .show-destination-upload {
-  /* width: 100%; */
+  width: 100%;
   background-color: #02735e;
   display: flex;
   flex-direction: column;
@@ -75,59 +62,61 @@ body {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  color: white;
+  color: antiquewhite;
+  max-width: 400px;
 }
 
 .show-destination-notes {
-  text-align: left !important;
+  text-align: left;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: #333;
   padding: 10px;
+  width: 100%;
+}
+
+.show-destination-visited {
+  width: 100%;
+  text-align: left;
 }
 .photo-title {
   text-align: center;
+  font-size: 1.5em;
 }
 
 form {
   font-family: "Comic Neue", sans-serif;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
-  gap: 15px;
-  /* width: 100%; */
-
-  /* background-color: #d9d0c7; */
-  background-color: #f9f9f9;
-  padding: 15px;
-  /* height: 65%; */
-  /* border: 1px red solid; */
-  /* padding: 30px 40px 20px 40px; */
+  justify-content: space-evenly;
+  width: 95%;
+  gap: 5px;
+  background-color: antiquewhite;
+  padding: 8px;
   color: black;
   border-radius: 10px;
-  /* padding: 10px; */
-  /* height: 50%; */
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.2em;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 input,
 textarea,
 select {
-  /* padding: 10px; */
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1em;
-  /* width: 100%; */
+  width: 100%;
 }
 
 button {
+  font-family: "Comic Neue", sans-serif;
   padding: 10px;
-  border-radius: 5px;
-  font-size: 1em;
   background-color: #02735e;
-  color: white;
+  color: antiquewhite;
+  border-radius: 30px;
   border: none;
-  cursor: pointer;
+  margin: 15px 0;
+  font-size: 1em;
   transition: all 0.3s ease;
 }
 
@@ -136,12 +125,37 @@ button:hover {
 }
 .delete-form {
   width: 150px;
+  background-color: #d9d0c7;
+  box-shadow: none;
+}
+.delete-form button {
+  border-radius: 10px;
+}
+
+.btn {
+  width: 150px;
+  background-color: #02735e;
+  color: antiquewhite;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.2em;
+  margin: 15px 0;
+  text-align: center;
+}
+
+a.btn {
+  text-decoration: none;
+  background-color: #02735e;
+}
+
+a.btn:hover {
+  background-color: #025951;
 }
 
 h3 {
   text-align: center;
-  font-size: 1.5em;
-  /* border: 1px red solid; */
+  font-size: 1.3em;
+  margin-bottom: 5px;
 }
 
 .show-destination-buttons {
@@ -149,7 +163,6 @@ h3 {
   flex-direction: row;
   width: 100%;
   justify-content: center;
-  gap: 15px;
   align-items: center;
   margin-top: 10px;
 }
@@ -165,7 +178,6 @@ h3 {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  /* justify-content: center; */
 }
 .slides::-webkit-scrollbar {
   width: 10px;
@@ -187,7 +199,6 @@ h3 {
   transform: scale(1);
   transition: transform 0.5s;
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,6 +240,87 @@ img {
 } */
 
 .error-message {
-  color: red;
-  font-size: 3em;
+  color: rgba(237, 43, 43, 0.751);
+  font-size: 2em;
+}
+
+/* 🎯 Default Styles for Large Screens (Already Defined) */
+
+/* 📌 Responsive Styling for Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .show-destination-wrapper {
+    flex-direction: column; /* ✅ Stack elements on smaller screens */
+    align-items: center;
+    gap: 30px;
+  }
+
+  .show-destination-container,
+  .show-destination-add-photos-container {
+    width: 80%; /* ✅ Make them wider */
+    max-width: 600px;
+  }
+
+  .show-destination-header {
+    font-size: 2em; /* ✅ Reduce size for smaller screens */
+  }
+
+  .slider {
+    width: 100%;
+    max-width: 350px; /* ✅ Prevent overflow */
+  }
+}
+
+/* 📌 Responsive Styling for Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .show-destination-container,
+  .show-destination-add-photos-container {
+    width: 90%; /* ✅ Wider containers for smaller screens */
+    min-width: unset; /* ✅ Allow containers to shrink */
+  }
+
+  .show-destination-header {
+    font-size: 1.8em; /* ✅ Reduce header size for smaller devices */
+  }
+
+  .show-destination-buttons {
+    flex-direction: column; /* ✅ Stack buttons instead of side-by-side */
+    gap: 10px;
+  }
+
+  .slider {
+    width: 100%;
+    max-width: 280px; /* ✅ Reduce image slider size */
+  }
+
+  button {
+    font-size: 1em; /* ✅ Prevent buttons from being too large */
+    padding: 8px;
+  }
+}
+
+/* 📌 Responsive Styling for Small Mobile Screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .show-destination-container,
+  .show-destination-add-photos-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .show-destination-header {
+    font-size: 1.5em;
+  }
+
+  .show-destination-notes {
+    font-size: 1.2em; /* ✅ Adjust text size */
+    padding: 5px;
+  }
+
+  button {
+    width: 100%; /* ✅ Make buttons full width */
+    font-size: 0.9em;
+  }
+
+  .slider {
+    max-width: 250px;
+  }
 }

@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="/stylesheets/partials.css" />
 
-<nav>
+
+
+<nav class="<%= isShowPage ? "show-page": "" %>">
+
   <%if (user) { %>
   <div class="navbar">
     <h1 id="nav-header">WanderList</h1>
