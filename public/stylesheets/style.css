@@ -41,12 +41,13 @@ h1 {
 
 .index-container {
   min-height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: center;
+  /* height: 100%; */
 }
 
 .index-header {
@@ -99,7 +100,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 20em;
+  width: 35%;
   height: 50%;
   background-color: antiquewhite;
   padding: 30px;
@@ -247,7 +248,7 @@ a.add-new:hover {
 
 .save-button {
   font-size: 0.8em;
-  width: 50%;
+  width: 150px;
 }
 
 .edit-container {
@@ -269,7 +270,7 @@ a.add-new:hover {
   height: 100%;
 }
 .edit-form form {
-  /* width: 80%; */
+  width: 80%;
   height: 100%;
   margin: 0;
   gap: 10px;
@@ -393,9 +394,31 @@ a.add-new:hover {
   .photo-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  form {
+    width: 65%;
+  }
+  .index-description {
+    font-size: 1.5em;
+  }
 }
 
 @media (max-width: 768px) {
+  .signin-header,
+  .signup-header {
+    font-size: 1.2em;
+  }
+
+  form {
+    width: 75%;
+  }
+
+  .index-header {
+    width: 85%;
+    /* height: 100vh; */
+  }
+  .index-description {
+    font-size: 1.3em;
+  }
   .edit-container {
     flex-direction: column; /* ✅ Stack form & photo sections on mobile */
     align-items: center;
@@ -427,5 +450,12 @@ a.add-new:hover {
 @media (max-width: 480px) {
   .photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .index-header {
+    width: 85%;
+  }
+  .index-description {
+    font-size: 1em;
   }
 }

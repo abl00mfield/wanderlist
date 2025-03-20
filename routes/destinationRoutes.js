@@ -6,7 +6,7 @@ const multer = require("multer");
 //configure multer to store files in memory
 const { storage } = require("../config/cloudinary");
 //limit to 2MB
-const upload = multer({ storage, limits: { fileSize: 2 * 1024 * 1024 } });
+const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
 const uploadErrorHandler = require("../middleware/upload-error-handler.js");
 //controller logic
 const {

@@ -176,7 +176,7 @@ h3 {
 }
 
 .slider {
-  width: 300px;
+  width: 325px;
   text-align: center;
   overflow: hidden;
 }
@@ -198,8 +198,8 @@ h3 {
 .slides > div {
   scroll-snap-align: start;
   flex-shrink: 0;
-  width: 300px;
-  height: 300px;
+  width: 325px;
+  height: 325px;
   margin-right: 50px;
   border-radius: 10px;
   background: #eee;
@@ -241,72 +241,68 @@ img {
   background: #000;
 }
 
-/* @supports (scroll-snap-type: x mandatory) {
-  .slider > a {
-    display: none;
-  }
-} */
-
 .error-message {
   color: rgba(237, 43, 43, 0.751);
-  font-size: 2em;
+  background-color: white;
+  font-size: 1.5em;
+  text-align: center;
+  margin: 10px;
+  border-radius: 10px;
 }
 
-/* 🎯 Default Styles for Large Screens (Already Defined) */
-
-/* 📌 Responsive Styling for Tablets (max-width: 1024px) */
+/* Responsive Styling for Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   .show-destination-wrapper {
-    flex-direction: column; /* ✅ Stack elements on smaller screens */
+    flex-direction: column; /* Stack elements on smaller screens */
     align-items: center;
     gap: 30px;
   }
 
   .show-destination-container,
   .show-destination-add-photos-container {
-    width: 80%; /* ✅ Make them wider */
+    width: 80%; /* Make them wider */
     max-width: 600px;
   }
 
   .show-destination-header {
-    font-size: 2em; /* ✅ Reduce size for smaller screens */
+    font-size: 2em; /* Reduce size for smaller screens */
   }
 
   .slider {
     width: 100%;
-    max-width: 350px; /* ✅ Prevent overflow */
+    max-width: 350px; /*Prevent overflow */
   }
 }
 
-/* 📌 Responsive Styling for Mobile Devices (max-width: 768px) */
+/* Responsive Styling for Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
   .show-destination-container,
   .show-destination-add-photos-container {
-    width: 90%; /* ✅ Wider containers for smaller screens */
-    min-width: unset; /* ✅ Allow containers to shrink */
+    width: 90%; /*  Wider containers for smaller screens */
+    min-width: unset; /*  Allow containers to shrink */
   }
 
   .show-destination-header {
-    font-size: 1.8em; /* ✅ Reduce header size for smaller devices */
+    font-size: 1.8em; /*  Reduce header size for smaller devices */
   }
 
   .show-destination-buttons {
-    flex-direction: column; /* ✅ Stack buttons instead of side-by-side */
+    flex-direction: column; /*  Stack buttons instead of side-by-side */
     gap: 10px;
   }
 
   .slider {
     width: 100%;
-    max-width: 280px; /* ✅ Reduce image slider size */
+    max-width: 280px; /* Reduce image slider size */
   }
 
   button {
-    font-size: 1em; /* ✅ Prevent buttons from being too large */
+    font-size: 1em; /* Prevent buttons from being too large */
     padding: 8px;
   }
 }
 
-/* 📌 Responsive Styling for Small Mobile Screens (max-width: 480px) */
+/* Responsive Styling for Small Mobile Screens (max-width: 480px) */
 @media (max-width: 480px) {
   .show-destination-container,
   .show-destination-add-photos-container {
@@ -319,12 +315,12 @@ img {
   }
 
   .show-destination-notes {
-    font-size: 1.2em; /* ✅ Adjust text size */
+    font-size: 1.2em; /* Adjust text size */
     padding: 5px;
   }
 
   button {
-    width: 100%; /* ✅ Make buttons full width */
+    width: 100%; /* Make buttons full width */
     font-size: 0.9em;
   }
 

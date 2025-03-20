@@ -51,7 +51,11 @@ app.use(
 app.use(passUserToView);
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  if (req.session.user) {
+    res.redirect("/destinations");
+  } else {
+    res.render("index.ejs");
+  }
 });
 
 app.use("/auth", authRoutes);
