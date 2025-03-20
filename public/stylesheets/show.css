@@ -234,6 +234,9 @@ img {
   background: #000;
 }
 
+.file-button {
+  background-color: ;
+}
 /* @supports (scroll-snap-type: x mandatory) {
   .slider > a {
     display: none;
