@@ -61,7 +61,8 @@ h1 {
 }
 
 .index-title,
-.edit-title {
+.edit-title,
+.new-title {
   font-family: "Delius Unicase", sans-serif;
   text-align: center;
 }
@@ -432,7 +433,8 @@ a.add-new:hover {
   .index-description {
     font-size: 1.3em;
   }
-  .edit-container {
+  .edit-container,
+  .new-container {
     flex-direction: column;
     align-items: center;
   }
