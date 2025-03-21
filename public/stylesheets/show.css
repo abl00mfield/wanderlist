@@ -37,7 +37,7 @@ body {
 }
 
 .show-destination-container {
-  background-color: antiquewhite;
+  background-color: #faebd7;
 }
 
 .show-destination-container,
@@ -147,9 +147,9 @@ button:hover {
   background-color: #02735e;
   color: antiquewhite;
   border-radius: 10px;
-  padding: 10px;
-  font-size: 1.2em;
-  margin: 15px 0;
+  padding: 11px;
+  font-size: 1.15em;
+  margin: 10px 0;
   text-align: center;
 }
 
@@ -296,7 +296,7 @@ img {
 
   .show-destination-buttons {
     flex-direction: column; /*  Stack buttons instead of side-by-side */
-    gap: 10px;
+    /* gap: 10px; */
   }
 
   .slider {
@@ -307,6 +307,10 @@ img {
   button {
     font-size: 1em; /* Prevent buttons from being too large */
     padding: 8px;
+  }
+  .btn {
+    padding: 8px;
+    font-size: 1em;
   }
 }
 
@@ -329,6 +333,9 @@ img {
 
   button {
     width: 100%; /* Make buttons full width */
+    font-size: 0.9em;
+  }
+  .btn {
     font-size: 0.9em;
   }
 

@@ -140,6 +140,7 @@ textarea {
   display: flex;
   flex-direction: row;
   gap: 5px;
+  align-items: center;
 }
 
 button {
@@ -234,10 +235,10 @@ ul {
 
 .add-new {
   align-self: center;
-  background-color: #a6785d;
+  background-color: #674b3b;
   padding: 10px;
   border-radius: 10px;
-  color: antiquewhite;
+  color: #faebd7;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
@@ -331,25 +332,31 @@ a.add-new:hover {
   font-family: "Comic Neue", sans-serif;
   width: 100px;
   height: 30px;
-  background-color: #a6785d;
+  background-color: antiquewhite;
   padding: 0;
-  color: antiquewhite;
+  color: black;
   font-size: 1em;
   box-shadow: none;
   margin: 0;
 }
 
 .remove-photo-button button {
-  background-color: #a6785d;
+  background-color: antiquewhite;
   width: 100px;
   font-size: 1em;
   font-family: "Comic Neue", sans-serif;
   display: inline-block;
-  width: 100px;
   padding: 0;
   margin: 0;
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: bold;
+  color: black;
+}
+
+.remove-photo-button button:hover,
+.remove-photo-button:hover {
+  background-color: white;
+  color: #025951;
 }
 
 .photo-box {

@@ -114,6 +114,8 @@ I created an ERD Chart, User stories, Routing Chart, and Wireframes on Trello:
 ## Resources Used
 
 - **Background Image**: [Unsplash](https://unsplash.com/photos/birds-eye-photography-of-shoreline-3RicCdnXfHs)
+- **Adding Images**: [Unsplash API](https://unsplash.com/developers)
+- **Uploading Images**: [Cloudinary](https://cloudinary.com/)
 - **Favicon**: [Freepik](https://www.freepik.com/icon/map_1595818)
 - **Photo Carousel**: [CSS-Tricks](https://css-tricks.com/css-only-carousel/)
 - **Readme Generation**: [Chat-GPT](https://chatgpt.com/)
