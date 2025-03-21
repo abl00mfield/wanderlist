@@ -1,5 +1,6 @@
 const User = require("../models/user.js");
 const Destination = require("../models/destination.js");
+const { cloudinary } = require("../config/cloudinary");
 
 exports.allDestinations = async (req, res) => {
   try {
@@ -44,7 +45,8 @@ exports.createDestination = async (req, res) => {
 
     currentUser.destinationIds.push(newDestination._id);
     await currentUser.save();
-    res.redirect("/destinations");
+    //user will be redirected to page where they can add pictures
+    res.redirect(`/destinations/${newDestination._id}`);
   } catch (error) {
     console.log(error);
     res.redirect("/");
@@ -85,13 +87,18 @@ exports.deleteDestination = async (req, res) => {
     //get userId from session
     const userId = req.session.user._id;
     //delete the destination from the collection
-    const deletedDestination = await Destination.findByIdAndDelete(
-      destinationId
-    );
+    const destination = await Destination.findById(destinationId);
 
-    if (!deletedDestination) {
-      return res.status(404).send({ error: "Destination not found" });
+    if (!destination) {
+      return res.status(404).send("Destination not found");
     }
+    //delete each photo from cloudinary
+    for (const photo of destination.photos) {
+      //parse out cloudinary ID from url
+      const publicId = photo.url.split("/").pop().split(".")[0];
+      await cloudinary.uploader.destroy(publicId);
+    }
+    await Destination.findByIdAndDelete(destinationId);
     //delete the reference in the User
     await User.findByIdAndUpdate(userId, {
       $pull: { destinationIds: destinationId },
