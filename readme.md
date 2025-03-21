@@ -16,11 +16,15 @@ WanderList is a full-stack travel destination tracking application that allows u
 
 ## See All User Destinations
 
-![all destinations page](public/images/image-3.png)
+![all destinations page](public/images/all.png)
 
 ## Search and Upload Photos
 
-![search photos page](public/images/image-4.png)
+![search photos page](public/images/image-3.png)
+
+## Show details about a single destination
+
+![show page](public/images/image-4.png)
 
 ## Edit Page
 
