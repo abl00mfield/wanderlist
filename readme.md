@@ -35,6 +35,11 @@ WanderList is a full-stack travel destination tracking application that allows u
 The application is fully deployed and can be accessed here:
 [WanderList on Heroku](https://wanderlist-e7bb02f51821.herokuapp.com/)
 
+## Planning Materials
+
+I created an ERD Chart, User stories, Routing Chart, and Wireframes on Trello:
+[Planning Materials](https://trello.com/b/BZGpBnCz/wanderlist-project)
+
 ## Features
 
 - **User Authentication**: Secure sign-in and sign-out functionality using session-based authentication.
