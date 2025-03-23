@@ -10,6 +10,13 @@ const destinationSchema = new mongoose.Schema({
       alt: { type: String, default: "Destination photo" },
     },
   ],
+  comments: [
+    {
+      user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      text: String,
+      createdAt: { type: Date, default: Date.now },
+    },
+  ],
 });
 
 const Destination = mongoose.model("Destination", destinationSchema);

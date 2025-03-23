@@ -113,7 +113,9 @@ exports.deleteDestination = async (req, res) => {
 
 exports.showDestination = async (req, res) => {
   try {
-    const destination = await Destination.findById(req.params.destinationId);
+    const destination = await Destination.findById(
+      req.params.destinationId
+    ).populate("comments.user");
     res.render("destinations/show.ejs", { destination, isShowPage: true });
   } catch (error) {
     console.log(error);

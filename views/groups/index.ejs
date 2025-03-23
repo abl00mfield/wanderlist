@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your groups</title>
+</head>
+
+<body>
+  <%- include("../partials/_navbar.ejs") %>
+  <div class="group-list-container">
+    <h1>All Groups</h1>
+    <% if (groups.length > 0) { %>
+    <ul>
+      <% groups.forEach(group => { %>
+      <li>
+        <a href="/groups/<%= group._id %>"><%= group.name %></a>
+      </li>
+
+      <% }) %>
+    </ul>
+    <% }  else { %>
+    <p>There aren't any groups</p>
+
+    <% } %>
+    <a href="/groups/new">Create A New Group</a>
+  </div>
+
+</body>
+
+</html>

@@ -174,7 +174,7 @@ h3 {
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .slider {
@@ -256,6 +256,139 @@ img {
   text-align: center;
   margin: 10px;
   border-radius: 10px;
+}
+
+/* existing styles... */
+
+.comment-section {
+  background-color: #02735e;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  margin: 10px auto;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.comment-section h2 {
+  font-family: "Delius Unicase", sans-serif;
+  font-size: 2em;
+  color: antiquewhite;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+.comment-section form {
+  width: 100%;
+}
+
+.comment-section p {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.comment-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.comment-list li {
+  padding: 10px;
+  background-color: #f7f3ef;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: "Comic Neue", sans-serif;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+form.comment-form {
+  align-items: center;
+  gap: 0px;
+}
+
+.comment-form button {
+  background-color: #02735e;
+  color: antiquewhite;
+  border: none;
+  border-radius: 15px;
+  /* padding: 10px 20px; */
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px;
+}
+
+ul .delete-comment,
+ul .edit-comment {
+  display: inline;
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+button.edit-comment-toggle,
+button.save-button {
+  border-radius: 5px;
+  background-color: rgb(195, 187, 187);
+  color: black;
+  margin: 5px;
+  padding: 5px;
+}
+
+form.delete-comment button {
+  border-radius: 5px;
+  background-color: rgb(195, 187, 187);
+  color: black;
+  font-size: 0.8em;
+  margin: 5px;
+  padding: 5px;
+}
+
+button.edit-comment-toggle:hover,
+button.save-button:hover,
+form.delete-comment button:hover {
+  background-color: rgb(159, 153, 153);
+}
+
+/* ul .delete-comment button,
+ul .edit-comment-toggle button {
+  border-radius: 5px;
+  background-color: rgb(195, 187, 187);
+  color: black;
+  font-size: 0.8em;
+  margin: 5px;
+  padding: 5px;
+} */
+
+ul .delete-comment button:hover,
+ul .edit-comment button:hover {
+  background-color: rgb(159, 153, 153);
+}
+
+.inline-edit-form {
+  display: none;
+  margin-top: 10px;
+}
+
+.comment-form button:hover {
+  background-color: #025951;
 }
 
 /* Responsive Styling for Tablets (max-width: 1024px) */

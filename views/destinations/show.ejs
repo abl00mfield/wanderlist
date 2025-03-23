@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/show.css">
   <script defer src="/js/slideshow.js"></script>
+  <script defer src="/js/comment.js"></script>
   <link rel="icon" href="/images/map.png">
-  <title><% destination.name %></title>
+  <title><%= destination.name %></title>
 </head>
 
 <body>
@@ -65,6 +66,44 @@
       </div>
     </div>
   </div>
+
+  <div class="comment-section">
+    <h2>Comments</h2>
+
+    <% if (destination.comments.length > 0) { %>
+    <ul class="comment-list">
+      <% destination.comments.forEach(comment => { %>
+      <li>
+        <strong><%= comment.user?.username || "Anonymous" %>:</strong>
+        <%= comment.text %><br>
+        <small class="comment-timestamp">
+          Posted on <%= new Date(comment.createdAt).toLocaleDateString() %> at <%= new Date(comment.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %>
+        </small>
+        <% if (user && comment.user && user._id === comment.user._id.toString()) { %>
+        <form class="delete-comment" action="/comments/<%= destination._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+        <button type="button" class="edit-comment-toggle" data-comment-id="<%= comment._id %>">Edit</button>
+
+        <form id="edit-form-<%= comment._id %>" class="inline-edit-form" action="/comments/<%= destination._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+          <textarea name="text" required><%= comment.text %></textarea>
+          <button class="save-button" type="submit">Save</button>
+        </form>
+
+        <% } %>
+      </li>
+      <% }) %>
+    </ul>
+    <% }  else { %>
+    <p>No comments yet. Be the first to comment!</p>
+    <% } %>
+
+    <form class="comment-form" action="/comments/<%= destination._id %>/comments" method="POST">
+      <textarea name="text" placeholder="Leave a comment..." required></textarea>
+      <button type="submit">Post Comment</button>
+    </form>
+  </div>
+
   <div class="show-destination-buttons">
     <form class="delete-form" action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
       <button type="submit">Delete Destination</button>

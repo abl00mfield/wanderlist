@@ -10,15 +10,18 @@
     <div class="nav-links">
       <a class="authlink" href="/destinations">Your Destinations</a>
       <a class="authlink" href="/auth/sign-out">Sign Out</a>
+      <a class="authlink" href="/groups/new"> Create a New Group</a>
+      <a class="authlink" href="/groups/my-groups">Your Groups</a>
+      <a class="authlink" href="/groups">All Groups</a>
+
     </div>
-  </div>
-  <% } else { %>
-  <div class="navbar">
-    <h1 id="nav-header">WanderList</h1>
-    <div class="nav-links">
-      <a class="authlink" href="/auth/sign-in">Sign In</a>
-      <a class="authlink" href="/auth/sign-up">Sign Up</a>
+    <% } else { %>
+    <div class="navbar">
+      <h1 id="nav-header">WanderList</h1>
+      <div class="nav-links">
+        <a class="authlink" href="/auth/sign-in">Sign In</a>
+        <a class="authlink" href="/auth/sign-up">Sign Up</a>
+      </div>
     </div>
-  </div>
-  <% } %>
+    <% } %>
 </nav>

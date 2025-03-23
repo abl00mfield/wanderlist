@@ -18,6 +18,12 @@ const userSchema = mongoose.Schema({
       ref: "Destination",
     },
   ],
+  groupIds: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Group",
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema);

@@ -20,6 +20,8 @@ dotenv.config();
 const authRoutes = require("./routes/authRoutes.js");
 const destinationRoutes = require("./routes/destinationRoutes.js");
 const photoRoutes = require("./routes/photoRoutes.js");
+const groupRoutes = require("./routes/groupRoutes.js");
+const commentRoutes = require("./routes/commentRoutes.js");
 
 //set up port
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -67,6 +69,8 @@ app.use("/auth", authRoutes);
 app.use(isSignedIn);
 app.use("/destinations", destinationRoutes);
 app.use("/photos", photoRoutes);
+app.use("/groups", groupRoutes);
+app.use("/comments", commentRoutes);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
