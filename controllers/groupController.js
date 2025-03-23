@@ -6,11 +6,11 @@ exports.newGroupForm = (req, res) => {
   res.render("groups/new.ejs");
 };
 
-exports.viewGroups = async (req, res) => {
+exports.allGroups = async (req, res) => {
   try {
-    const groups = await Group.find();
-    console.log(groups);
-    res.render("groups/index.ejs", { groups });
+    const groups = await Group.find().populate("owner", "username");
+    const userId = req.session.user._id;
+    res.render("groups/index.ejs", { groups, userId });
   } catch (error) {
     console.log("Error fetching groups: ", error);
   }

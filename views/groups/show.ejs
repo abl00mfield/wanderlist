@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=group.name %>></title>
+
+</head>
+
+<body>
+  <% include("../partials/_navbar.ejs") %>
+
+  <h1>Group: <%= group.name %></h1>
+  <h2>Members</h2>
+  <ul>
+    <% group.members.forEach(member => { %>
+    <li><%= member.username %></li>
+    <% }) %>
+  </ul>
+
+  <h2>Group Destinations</h2>
+  <% if (destinations.length > 0) { %>
+  <ul class="group-destination-list">
+    <% destinations.forEach(destination => { %>
+    <a href="/destinations/<%= destination._id %>">
+      <li>
+        <%= destination.location %>
+        <p><%= destination.notes %></p>
+        <% if (destination.photos.length > 0) { %>
+        <img src="<%= destination.photos[0].url %>" alt="<%= destination.photos[0].alt %>" width=250>
+        <% } %>
+      </li>
+    </a>
+
+    <% }) %>
+
+  </ul>
+
+  <%} else { %>
+  <p>No destinations have been shared by Group Members</p>
+  <% } %>
+
+
+</body>
+
+</html>

@@ -407,6 +407,10 @@ a.add-new:hover {
   align-self: center;
 }
 
+.join-group {
+  display: inline;
+}
+
 @media (max-width: 1024px) {
   .photo-grid {
     grid-template-columns: 1fr 1fr 1fr;

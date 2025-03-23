@@ -7,7 +7,7 @@ const {
   joinGroup,
   myGroups,
   groupPage,
-  viewGroups,
+  allGroups,
 } = require("../controllers/groupController");
 
 const isSignedIn = require("../middleware/is-signed-in.js");
@@ -27,6 +27,6 @@ router.get("/my-groups", isSignedIn, myGroups);
 //view a specific group and all member destinations
 router.get("/:groupId", isSignedIn, groupPage);
 
-router.get("/", isSignedIn, viewGroups);
+router.get("/", isSignedIn, allGroups);
 
 module.exports = router;

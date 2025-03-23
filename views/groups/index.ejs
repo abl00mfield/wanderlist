@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your groups</title>
+  <title>All Groups</title>
 </head>
 
 <body>
@@ -15,13 +15,21 @@
     <ul>
       <% groups.forEach(group => { %>
       <li>
-        <a href="/groups/<%= group._id %>"><%= group.name %></a>
+        <a href="/groups/<%= group._id %>"><strong><%= group.name %></strong> - created by <%=group.owner.username %></a>
+        <% if (!group.members.includes(userId)) { %>
+        <form class="join-group" action="/groups/<%= group._id %>/join" method="POST">
+          <button type="submit">Join Group</button>
+        </form>
+        <% } else { %>
+        <span class="joined-label">(Already a member)</span>
+        <% } %>
+
       </li>
 
       <% }) %>
     </ul>
     <% }  else { %>
-    <p>There aren't any groups</p>
+    <p>No groups have been created</p>
 
     <% } %>
     <a href="/groups/new">Create A New Group</a>
