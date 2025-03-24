@@ -17,7 +17,7 @@
       <li>
         <a href="/groups/<%= group._id %>"><strong><%= group.name %></strong> - created by <%=group.owner.username %></a>
         <% if (!group.members.includes(userId)) { %>
-        <form class="join-group" action="/groups/<%= group._id %>/join" method="POST">
+        <form class="join-group" action="/groups/<%= group._id %>/join?_method=PATCH" method="POST">
           <button type="submit">Join Group</button>
         </form>
         <% } else { %>

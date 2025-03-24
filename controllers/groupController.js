@@ -82,8 +82,7 @@ exports.groupPage = async (req, res) => {
     const users = await User.find({
       //find all users whose _id is in the array group.members
       _id: { $in: group.members },
-    }) //get all of their destinations
-      .populate("destinationIds");
+    }).populate("destinationIds");
 
     //put all of the destinations in a single array
     const destinations = users.flatMap((user) => user.destinationIds);
@@ -92,5 +91,37 @@ exports.groupPage = async (req, res) => {
   } catch (error) {
     console.log("Error loading group page:", error);
     res.redirect("/groups/my-groups");
+  }
+};
+
+exports.leaveGroup = async (req, res) => {
+  const { groupId } = req.params;
+  const userId = req.session.user._id;
+
+  try {
+    const group = await Group.findById(groupId);
+    if (!group) {
+      return res.status(404).sent("Group not found");
+    }
+
+    if (group.owner.toString() === userId) {
+      return res
+        .status(403)
+        .send("You cannot leave your own group.  Delete the group instead");
+    }
+
+    //remove the user from the group
+    await Group.findByIdAndUpdate(groupId, {
+      $pull: { members: userId },
+    });
+
+    //remove group from the user's list of groups
+    await User.findByIdAndUpdate(userId, {
+      $pull: { groupId: groupId },
+    });
+    res.redirect("/groups");
+  } catch (error) {
+    console.log("Error leaving group: ", error);
+    res.redirect(`/groups/${groupId}`);
   }
 };
