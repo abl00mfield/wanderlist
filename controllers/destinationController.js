@@ -41,7 +41,14 @@ exports.createDestination = async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);
     req.body.hasBeenVisited = req.body.hasBeenVisited === "on" ? true : false;
 
-    const newDestination = await Destination.create(req.body);
+    const newDestination = new Destination({
+      location: req.body.location,
+      hasBeenVisited: req.body.hasBeenVisited,
+      notes: req.body.notes,
+      user: req.session.user._id,
+    });
+
+    await newDestination.save();
 
     currentUser.destinationIds.push(newDestination._id);
     await currentUser.save();

@@ -4,6 +4,11 @@ const destinationSchema = new mongoose.Schema({
   location: { type: String, required: true },
   hasBeenVisited: { type: Boolean, default: false },
   notes: { type: String },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   photos: [
     {
       url: { type: String },

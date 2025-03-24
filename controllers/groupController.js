@@ -117,7 +117,7 @@ exports.leaveGroup = async (req, res) => {
 
     //remove group from the user's list of groups
     await User.findByIdAndUpdate(userId, {
-      $pull: { groupId: groupId },
+      $pull: { groupIds: groupId },
     });
     res.redirect("/groups");
   } catch (error) {

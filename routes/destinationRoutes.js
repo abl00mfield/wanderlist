@@ -23,6 +23,7 @@ const {
   uploadUserPhoto,
   removeDestinationPhoto,
 } = require("../controllers/photoController");
+const isDestinationOwner = require("../middleware/isDestinationOwner.js");
 
 //index page, show all destinations
 router.get("/", allDestinations);
@@ -39,24 +40,33 @@ router.post("/", createDestination);
 router.get("/:destinationId", showDestination);
 
 //DELETE route to delete a destination
-router.delete("/:destinationId", deleteDestination);
+router.delete("/:destinationId", isDestinationOwner, deleteDestination);
 
 //GET route to edit a destination, links to page
 //with a form to edit
-router.get("/:destinationId/edit", editDestinationGet);
+router.get("/:destinationId/edit", isDestinationOwner, editDestinationGet);
 
 //PUT route to update the database with the edited destination
-router.put("/:destinationId", editDestinationPut);
+router.put("/:destinationId", isDestinationOwner, editDestinationPut);
 
 //DELETE route to delete a user selected photo
-router.delete("/:destinationId/photos/:photoUrl", removeDestinationPhoto);
+router.delete(
+  "/:destinationId/photos/:photoUrl",
+  isDestinationOwner,
+  removeDestinationPhoto
+);
 
 //POST route to add a photo to a destination
-router.post("/:destinationId/add-photo", addPhotoToDestination);
+router.post(
+  "/:destinationId/add-photo",
+  isDestinationOwner,
+  addPhotoToDestination
+);
 
 //POST route to add an uploaded photo to a destination
 router.post(
   "/:destinationId/upload-photo",
+  isDestinationOwner,
   upload.single("photo"),
   uploadErrorHandler,
   uploadUserPhoto

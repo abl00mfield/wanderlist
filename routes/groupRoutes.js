@@ -14,24 +14,24 @@ const {
 const isSignedIn = require("../middleware/is-signed-in.js");
 
 //get all the groups that exist
-router.get("/", isSignedIn, allGroups);
+router.get("/", allGroups);
 
 //show form to create a new group
-router.get("/new", isSignedIn, newGroupForm);
+router.get("/new", newGroupForm);
 
 //create a new group
-router.post("/new", isSignedIn, createGroup);
+router.post("/new", createGroup);
 
 //view all groups a user belongs to
-router.get("/my-groups", isSignedIn, myGroups);
+router.get("/my-groups", myGroups);
 
 //join a group
-router.patch("/:groupId/join", isSignedIn, joinGroup);
+router.patch("/:groupId/join", joinGroup);
 
 //leave a group
-router.patch("/:groupId/leave", isSignedIn, leaveGroup);
+router.patch("/:groupId/leave", leaveGroup);
 
 //view a specific group and all member destinations
-router.get("/:groupId", isSignedIn, groupPage);
+router.get("/:groupId", groupPage);
 
 module.exports = router;
