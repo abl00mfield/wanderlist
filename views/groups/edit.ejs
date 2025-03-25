@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/groups.css">
   <title>Edit Group <%= group.name %></title>
 </head>
 
 <body>
   <%- include ("../partials/_navbar.ejs") %>
   <div class="group-edit-container">
-    <h1>Edit Group: <%= group.name %></h1>
+    <h2>Edit Group: <%= group.name %></h2>
 
     <form action="/groups/<%= group._id %>?_method=PUT" method="POST">
       <label for="name">New Group Name: </label>

@@ -4,19 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/groups.css">
   <title>Create a Group</title>
 </head>
 
 <body>
   <%- include("../partials/_navbar.ejs") %>
-  <h1>Create a New Group</h1>
-  <form action="/groups/new" method="POST">
-    <label for="name">Group name:</label>
-    <input type="text" name="name" id="name" required>
-    <button type="submit">Create Group</button>
-  </form>
-  <a href="/groups/my-groups">Back to my groups</a>
+  <div class="group-form-container">
 
+    <h2>Create a New Group</h2>
+    <form action="/groups/new" method="POST">
+      <label for="name">Group name:</label>
+      <input type="text" name="name" id="name" required>
+      <button type="submit">Create Group</button>
+    </form>
+    <a href="/groups/my-groups">Back to my groups</a>
+
+  </div>
 </body>
 
 </html>

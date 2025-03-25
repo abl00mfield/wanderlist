@@ -4,72 +4,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/groups.css">
   <title><%=group.name %></title>
 
 </head>
 
 <body>
-  <%- include("../partials/_navbar.ejs") %>
+  <!-- views/groups/show.ejs -->
+  <%- include("../partials/_navbar") %>
 
-  <h1>Group: <%= group.name %></h1>
+  <div class="group-page-container">
+    <h2>Group: <%= group.name %></h2>
 
-  <% if (user && group.owner._id.toString() === user._id) { %>
-  <div class="group-owner-actions">
-    <a href="/groups/<%= group._id %>/edit">Edit Group</a>
-    <form action="/groups/<%= group._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete Group</button>
+    <% if (user && group.owner._id.toString() === user._id) { %>
+    <div class="group-owner-actions">
+      <a class="btn" href="/groups/<%= group._id %>/edit">Edit Group</a>
+      <form class="btn-form" action="/groups/<%= group._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button class="btn" type="submit">Delete Group</button>
+      </form>
+    </div>
+    <% } %>
+
+    <h3>Members</h3>
+    <ul>
+      <% group.members.forEach(member => { %>
+      <li>
+        <%= member.username %>
+        <% if (user && group.owner._id.toString() === user._id && member._id.toString() !== user._id) { %>
+        <form action="/groups/<%= group._id %>/members/<%= member._id %>/remove" method="POST" style="display:inline;">
+          <button type="submit">Remove</button>
+        </form>
+        <% } %>
+      </li>
+      <% }) %>
+    </ul>
+
+    <% if (
+    user &&
+    group.owner._id.toString() !== user._id &&
+    group.members.some(member => member._id.toString() === user._id)
+  ) { %>
+    <form action="/groups/<%= group._id %>/leave?_method=PATCH" method="POST">
+      <button type="submit">Leave Group</button>
     </form>
+    <% } %>
+
+    <h3>Group Destinations</h3>
+    <% if (user && group.members.some(member => member._id.toString() === user._id)) { %>
+    <% if (destinations.length > 0) { %>
+    <div class="group-destination-grid">
+      <% destinations.forEach(destination => { %>
+      <div class="group-destination-card">
+        <strong><%= destination.location %></strong>
+        <p><%= destination.notes %></p>
+
+        <% if (destination.photos.length > 0) { %>
+        <img src="<%= destination.photos[0].url %>" alt="<%= destination.photos[0].alt %>" width="250">
+        <% } %>
+
+        <a class="btn" href="/destinations/<%= destination._id %>">View Destination</a>
+      </div>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <p>No destinations have been shared by group members yet.</p>
+    <% } %>
+    <% } else { %>
+    <p>You must be a member of this group to view its destinations.</p>
+    <form action="/groups/<%= group._id %>/join?_method=PATCH" method="POST">
+      <button type="submit">Join Group</button>
+    </form>
+    <% } %>
 
 
   </div>
-
-  <%}%>
-  <h2>Members</h2>
-  <ul>
-    <% group.members.forEach(member => { %>
-  <li>
-    <%= member.username %>
-
-  </li>
-  <% }) %>
-  </ul>
-
-
-
-  <% if (user && group.owner._id.toString() !== user._id && group.members.some(member=> member._id.toString() === user._id)) { %>
-  <form action="/groups/<%= group._id %>/leave?_method=PATCH" method="POST">
-    <button type="submit">Leave Group</button>
-  </form>
-  <% } %>
-
-  <h2>Group Destinations</h2>
-  <% if (user && group.members.some(member => member._id.toString() === user._id)) { %>
-  <% if (destinations.length > 0) { %>
-  <ul class="group-destination-list">
-    <% destinations.forEach(destination => { %>
-    <a href="/destinations/<%= destination._id %>">
-      <li>
-        <%= destination.location %>
-        <p><%= destination.notes %></p>
-        <% if (destination.photos.length > 0) { %>
-        <img src="<%= destination.photos[0].url %>" alt="<%= destination.photos[0].alt %>" width=250>
-        <% } %>
-      </li>
-    </a>
-    <% }) %>
-  </ul>
-
-  <% } else { %>
-  <p>No destinations have been shared by Group Members</p>
-  <% } %>
-
-  <%} else { %>
-  <p>You must be a member of this group to view its destinations.</p>
-  <form action="/groups/<%= group._id %>/join?_method=PATCH" method="POST">
-    <button type="submit">Join Group</button>
-  </form>
-  <% } %>
-
 
 </body>
 

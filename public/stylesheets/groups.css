@@ -1,0 +1,125 @@
+/* public/stylesheets/groups.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Delius+Unicase:wght@400;700&display=swap");
+
+body {
+  background-color: #025951;
+}
+
+.group-page-container,
+.group-form-container,
+.group-list-container,
+.group-edit-container {
+  max-width: 800px;
+  /* max-width: 85%; */
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Comic Neue", sans-serif;
+}
+
+.group-page-container {
+  max-width: 90%;
+}
+
+h2,
+h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-family: "Delius Unicase", cursive;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+.btn {
+  background-color: #025951;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Comic Neue", sans-serif;
+}
+
+button {
+  font-size: 1.1em;
+}
+
+.btn-form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+button:hover,
+a.btn:hover {
+  background-color: #02735e;
+}
+
+.group-owner-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.group-destination-list img {
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+
+input[type="text"] {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  font-family: "Comic Neue", sans-serif;
+}
+
+.group-destination-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.group-destination-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Comic Neue", sans-serif;
+}
+
+.group-destination-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
