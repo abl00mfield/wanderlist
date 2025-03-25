@@ -78,6 +78,7 @@ exports.groupPage = async (req, res) => {
   try {
     //get all the members from the group
     const group = await Group.findById(req.params.groupId).populate("members");
+    // console.log("group", group);
 
     const users = await User.find({
       //find all users whose _id is in the array group.members
@@ -123,5 +124,43 @@ exports.leaveGroup = async (req, res) => {
   } catch (error) {
     console.log("Error leaving group: ", error);
     res.redirect(`/groups/${groupId}`);
+  }
+};
+
+exports.editGroupForm = async (req, res) => {
+  try {
+    const group = await Group.findById(req.params.groupId);
+    res.render("groups/edit.ejs", { group });
+  } catch (error) {
+    console.log("Error fetching group:", error);
+  }
+};
+
+exports.updateGroup = async (req, res) => {
+  try {
+    const { name } = req.body;
+    await Group.findByIdAndUpdate(req.params.groupId, { name });
+    res.redirect(`/groups/${req.params.groupId}`);
+  } catch (error) {
+    console.log("Error updating group:", error);
+    res.redirect("/groups");
+  }
+};
+
+exports.deleteGroup = async (req, res) => {
+  try {
+    const group = await Group.findById(req.params.groupId);
+
+    //remove the group from each member's groupIds
+    await User.updateMany(
+      { _id: { $in: group.members } },
+      { $pull: { groupIds: group._id } }
+    );
+
+    await group.deleteOne();
+    res.resdirect("/groups");
+  } catch (error) {
+    console.log("Error deleteing group:", error);
+    res.redirect(`/groups/${req.params.groupId}`);
   }
 };

@@ -36,18 +36,15 @@ router.get("/new", (req, res) => {
 //POST route to create a new destination
 router.post("/", createDestination);
 
-//GET route to show a single destination
-router.get("/:destinationId", showDestination);
-
-//DELETE route to delete a destination
-router.delete("/:destinationId", isDestinationOwner, deleteDestination);
-
 //GET route to edit a destination, links to page
 //with a form to edit
 router.get("/:destinationId/edit", isDestinationOwner, editDestinationGet);
 
 //PUT route to update the database with the edited destination
 router.put("/:destinationId", isDestinationOwner, editDestinationPut);
+
+//DELETE route to delete a destination
+router.delete("/:destinationId", isDestinationOwner, deleteDestination);
 
 //DELETE route to delete a user selected photo
 router.delete(
@@ -71,5 +68,8 @@ router.post(
   uploadErrorHandler,
   uploadUserPhoto
 );
+
+//GET route to show a single destination
+router.get("/:destinationId", showDestination);
 
 module.exports = router;

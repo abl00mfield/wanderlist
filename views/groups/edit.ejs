@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Group <%= group.name %></title>
+</head>
+
+<body>
+  <%- include ("../partials/_navbar.ejs") %>
+  <div class="group-edit-container">
+    <h1>Edit Group: <%= group.name %></h1>
+
+    <form action="/groups/<%= group._id %>?_method=PUT" method="POST">
+      <label for="name">New Group Name: </label>
+      <input type="text" name="name" value="<%= group.name %>" id="name" required>
+      <button type="submit">Save Changes</button>
+    </form>
+    <a href="/groups/<%= group._id %>">Cancel</a>
+  </div>
+
+</body>
+
+</html>

@@ -9,9 +9,12 @@ const {
   groupPage,
   allGroups,
   leaveGroup,
+  editGroupForm,
+  deleteGroup,
+  updateGroup,
 } = require("../controllers/groupController");
 
-const isSignedIn = require("../middleware/is-signed-in.js");
+const isGroupOwner = require("../middleware/isGroupOwner.js");
 
 //get all the groups that exist
 router.get("/", allGroups);
@@ -30,6 +33,15 @@ router.patch("/:groupId/join", joinGroup);
 
 //leave a group
 router.patch("/:groupId/leave", leaveGroup);
+
+//display a form to edit the current group
+router.get("/:groupId/edit", isGroupOwner, editGroupForm);
+
+//update the group
+router.put("/:groupId", isGroupOwner, updateGroup);
+
+//delete the group
+router.delete("/:groupId", isGroupOwner, deleteGroup);
 
 //view a specific group and all member destinations
 router.get("/:groupId", groupPage);

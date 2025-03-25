@@ -12,15 +12,29 @@
   <%- include("../partials/_navbar.ejs") %>
 
   <h1>Group: <%= group.name %></h1>
+
+  <% if (user && group.owner._id.toString() === user._id) { %>
+  <div class="group-owner-actions">
+    <a href="/groups/<%= group._id %>/edit">Edit Group</a>
+    <form action="/groups/<%= group._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete Group</button>
+    </form>
+
+
+  </div>
+
+  <%}%>
   <h2>Members</h2>
   <ul>
     <% group.members.forEach(member => { %>
-    <li>
-      <%= member.username %>
+  <li>
+    <%= member.username %>
 
-    </li>
-    <% }) %>
+  </li>
+  <% }) %>
   </ul>
+
+
 
   <% if (user && group.owner._id.toString() !== user._id && group.members.some(member=> member._id.toString() === user._id)) { %>
   <form action="/groups/<%= group._id %>/leave?_method=PATCH" method="POST">
