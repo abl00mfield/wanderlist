@@ -258,54 +258,50 @@ img {
   border-radius: 10px;
 }
 
-/* Responsive Styling for Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   .show-destination-wrapper {
-    flex-direction: column; /* Stack elements on smaller screens */
-    align-items: center;
+    flex-direction: column;
     gap: 30px;
   }
 
   .show-destination-container,
   .show-destination-add-photos-container {
-    width: 80%; /* Make them wider */
+    width: 80%;
     max-width: 600px;
   }
 
   .show-destination-header {
-    font-size: 2em; /* Reduce size for smaller screens */
+    font-size: 2em;
   }
 
   .slider {
     width: 100%;
-    max-width: 350px; /*Prevent overflow */
+    max-width: 350px;
   }
 }
 
-/* Responsive Styling for Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
   .show-destination-container,
   .show-destination-add-photos-container {
-    width: 90%; /*  Wider containers for smaller screens */
-    min-width: unset; /*  Allow containers to shrink */
+    width: 90%;
+    min-width: unset;
   }
 
   .show-destination-header {
-    font-size: 1.8em; /*  Reduce header size for smaller devices */
+    font-size: 1.8em;
   }
 
   .show-destination-buttons {
-    flex-direction: column; /*  Stack buttons instead of side-by-side */
-    /* gap: 10px; */
+    flex-direction: column;
   }
 
   .slider {
     width: 100%;
-    max-width: 280px; /* Reduce image slider size */
+    max-width: 280px;
   }
 
   button {
-    font-size: 1em; /* Prevent buttons from being too large */
+    font-size: 1em;
     padding: 8px;
   }
   .btn {
@@ -314,7 +310,6 @@ img {
   }
 }
 
-/* Responsive Styling for Small Mobile Screens (max-width: 480px) */
 @media (max-width: 480px) {
   .show-destination-container,
   .show-destination-add-photos-container {
@@ -327,12 +322,12 @@ img {
   }
 
   .show-destination-notes {
-    font-size: 1.2em; /* Adjust text size */
+    font-size: 1.2em;
     padding: 5px;
   }
 
   button {
-    width: 100%; /* Make buttons full width */
+    width: 100%;
     font-size: 0.9em;
   }
   .btn {

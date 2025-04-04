@@ -324,37 +324,36 @@ a.add-new:hover {
 .edit-photo {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
 }
 
 .remove-photo-button {
-  font-family: "Comic Neue", sans-serif;
-  width: 100px;
-  height: 30px;
-  background-color: antiquewhite;
-  padding: 0;
-  color: black;
-  font-size: 1em;
-  box-shadow: none;
+  display: flex;
   margin: 0;
+  padding: 0;
+  background-color: transparent;
+  width: 100%;
+  box-shadow: none;
+  align-items: center;
 }
 
 .remove-photo-button button {
-  background-color: antiquewhite;
   width: 100px;
-  font-size: 1em;
+  height: 30px;
+  background-color: antiquewhite;
   font-family: "Comic Neue", sans-serif;
-  display: inline-block;
+  font-size: 1em;
+  /* font-weight: bold; */
+  color: black;
+  border: none;
+  border-radius: 10px;
   padding: 0;
   margin: 0;
-  border-radius: 10px;
-  font-weight: bold;
-  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.remove-photo-button button:hover,
-.remove-photo-button:hover {
+.remove-photo-button button:hover {
   background-color: white;
   color: #025951;
 }

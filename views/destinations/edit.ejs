@@ -34,10 +34,11 @@
         <% destination.photos.forEach(photo => { %>
         <div class="edit-photo">
           <img class=thumbnail src="<%= photo.url %>" alt="<%= photo.alt %>">
-          <!-- <p class="alt-text"><%= photo.alt %></p> -->
+          <!-- <div> -->
           <form class="remove-photo-button" action="/destinations/<%= destination._id %>/photos/<%= encodeURIComponent(photo.url) %>?_method=DELETE" method="POST">
             <button type="submit">Remove</button>
           </form>
+          <!-- </div> -->
         </div>
         <% }) %>
       </div>
