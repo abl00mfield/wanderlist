@@ -3,11 +3,11 @@ const router = express.Router();
 
 //photo upload package
 const multer = require("multer");
-//configure multer to store files in memory
-const { storage } = require("../config/cloudinary");
-//limit to 2MB
-const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
-const uploadErrorHandler = require("../middleware/upload-error-handler.js");
+//configure multer to store files in the cloud
+const { storage } = require("../config/cloudinary"); //create configured multer instance
+//limit to 5MB
+const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }); //tells mulster to use cloudinary for storage
+const uploadErrorHandler = require("../middleware/upload-error-handler.js"); //custom middleware
 //controller logic
 const {
   createDestination,
@@ -57,9 +57,9 @@ router.post("/:destinationId/add-photo", addPhotoToDestination);
 //POST route to add an uploaded photo to a destination
 router.post(
   "/:destinationId/upload-photo",
-  upload.single("photo"),
-  uploadErrorHandler,
-  uploadUserPhoto
+  upload.single("photo"), //multer middleware that parses the file from the incoming form with name "photo"
+  uploadErrorHandler, //creates error message if file is too big
+  uploadUserPhoto //calls the controller function to handle the data
 );
 
 module.exports = router;

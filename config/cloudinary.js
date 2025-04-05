@@ -1,7 +1,7 @@
 //configuration for cloudinary
 
 const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary"); //import Cloudinary
 require("dotenv").config();
 
 cloudinary.config({
@@ -11,7 +11,8 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-  cloudinary,
+  //storage is an instance of CloudinaryStorage
+  cloudinary, //this tells multer to save the upload to cloudinary cloud storage
   params: {
     folder: "wanderlist_uploads",
     allowed_formats: ["jpg", "png", "jpeg"],
